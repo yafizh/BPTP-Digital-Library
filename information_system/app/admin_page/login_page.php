@@ -12,10 +12,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
   <!-- CONFIG -->
-  <script src="const/config.js"></script>
-  <script src="const/constant_values.js"></script>
-  <?php require_once "const/config.php" ?>
+  <script src="<?= '../../../CONFIGURATION.js' ?>"></script>
+  <?php require_once "../../../CONFIGURATION.php"; ?>
 </head>
 <style>
   html,
@@ -71,10 +71,10 @@
           <label for="username">Username</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
           <label for="password">Password</label>
         </div>
-        <a href="<?= DEVELOPMENT_BASE_URL ?>home_page.php" class="link-dark">Masuk Sebagai Tamu</a>
+        <a href="<?= (IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/home_page.php" class="link-dark">Masuk Sebagai Tamu</a>
         <button id="btn-login" class="mt-2 w-100 btn btn-lg btn-success" type="submit">Masuk</button>
       </div>
       <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->
@@ -83,14 +83,14 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script>
-     sessionStorage.clear();
+    sessionStorage.clear();
     $('.form-signin form').on('submit', e => {
       e.preventDefault();
 
       if (typeof(Storage) !== "undefined") {
-       
+
         $.ajax({
-          url: `${BASE_URL}index.php?request=postAuth`,
+          url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/?request=postAuth`,
           type: 'POST',
           data: {
             'username': $('#username').val(),
@@ -101,7 +101,7 @@
             console.log(response)
             if (response.isSuccess) {
               sessionStorage.setItem(cacheKey, JSON.stringify(response.data));
-              location.replace(`${DEVELOPMENT_BASE_URL}admin_page/beranda.php`);
+              location.replace(`${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}information_system/app/admin_page/beranda.php`);
             } else {
               alert('Username atau Password salah')
             }

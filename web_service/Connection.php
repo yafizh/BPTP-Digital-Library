@@ -1,5 +1,5 @@
-<?php require_once 'CONFIG.php';
-
+<?php
+require_once '../CONFIGURATION.php';
 
 // Create connection
 $conn = new mysqli(HOST, USER, PASSWORD, DATABASE);

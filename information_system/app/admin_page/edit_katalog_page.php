@@ -1,5 +1,5 @@
 <?php require_once 'header.php' ?>
-<?php require_once "../assets/icon_source.php" ?>
+
 <main>
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
@@ -11,7 +11,7 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                <a href="<?= DEVELOPMENT_BASE_URL ?>admin_page/beranda.php" class="nav-link link-dark" aria-current="page">
+                <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/beranda.php" class="nav-link link-dark" aria-current="page" id="beranda">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#home" />
                     </svg>
@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?= DEVELOPMENT_BASE_URL ?>admin_page/add_catalog_page.php" class="nav-link active" id="katalog">
+                <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/add_catalog_page.php" class="nav-link active" id="katalog">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#grid" />
                     </svg>
@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?= DEVELOPMENT_BASE_URL ?>admin_page/report_page.php" class="nav-link link-dark" id="reporty">
+                <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/report_page.php" class="nav-link link-dark" id="reporty">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#table" />
                     </svg>
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?= DEVELOPMENT_BASE_URL ?>admin_page/change_password_page.php" class="nav-link link-dark" id="ganti_password">
+                <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/change_password_page.php" class="nav-link link-dark" id="ganti_password">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#people-circle" />
                     </svg>
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?= DEVELOPMENT_BASE_URL ?>login_page.php" class="nav-link link-dark">
+                <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/login_page.php" class="nav-link link-dark">
                     <svg class="bi me-2" width="16" height="16">
                         <use xlink:href="#logout" />
                     </svg>
@@ -108,7 +108,7 @@
         formData.set("book-id", editData.book_id);
         if (id == 0) {
             $.ajax({
-                url: `${BASE_URL}index.php?request=putBook`,
+                url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/?request=putBook`,
                 type: 'POST',
                 data: formData,
                 dataType: 'json',

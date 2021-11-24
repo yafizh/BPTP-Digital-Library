@@ -12,7 +12,7 @@ const deleteBook = book_id => {
     }).then((resutlt) => {
         if (resutlt.isConfirmed) {
             $.ajax({
-                url: `${BASE_URL}index.php?request=deleteBookByBookId`,
+                url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=deleteBookByBookId`,
                 type: 'POST',
                 data: {
                     "book_id": book_id
@@ -68,7 +68,7 @@ const showBook = callback => {
             `
                     ${sessionStorage.getItem(cacheKey) ? admin_overplay : user_overplay}
                     <div class="card p-0 shadow-sm" style="width: 12rem; height: 25rem;">
-                        <img style="height:280px; object-fit:cover;" src="${BASE_URL}${IMAGE_COVER_RESOURCE}${value.book_cover_uri}">
+                        <img style="height:280px; object-fit:cover;" src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}">
                         <div class="card-body">
                             <h5 
                                 class="card-title book-title" 
@@ -83,7 +83,7 @@ const showBook = callback => {
             $(book).on('click', function () {
                 $("#exampleModal .modal-body").html(`
                                 <div class="d-flex justify-content-center">
-                                    <img src="${BASE_URL}${IMAGE_COVER_RESOURCE}${value.book_cover_uri}" style="max-height: 300px;">
+                                    <img src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}" style="max-height: 300px;">
                                 </div>
                                 <div class="mt-3">
                                     <div class="d-flex">
@@ -129,7 +129,7 @@ const showBook = callback => {
                                     <div class="d-flex">
                                         <div style="width: 170px;">File Digital</div>
                                         <div class="col">
-                                            <a href="#" onclick="window.open('${BASE_URL}${FILE_RESOURCE}${value.book_file_uri}', '_blank', 'fullscreen=yes'); return false;">Klik disini</a>
+                                            <a href="#" onclick="window.open('${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${FILE_RESOURCE}${value.book_file_uri}', '_blank', 'fullscreen=yes'); return false;">Klik disini</a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@ const showBook = callback => {
 
 const searchBook = keyword => {
     $.ajax({
-        url: `${BASE_URL}index.php?request=getBookByTitleAuthorISBNPublisher`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getBookByTitleAuthorISBNPublisher`,
         type: 'POST',
         data: {
             'keyword': keyword
@@ -165,7 +165,7 @@ $('#book-search').on('input', function () {
 
 const editBook = book_id => {
     $.ajax({
-        url: `${BASE_URL}index.php?request=getBookByBookId`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getBookByBookId`,
         type: 'POST',
         data: {
             "book_id": book_id
@@ -181,7 +181,7 @@ const editBook = book_id => {
 }
 const getAllCategories = _ => {
     $.ajax({
-        url: `${BASE_URL}index.php?request=getAllCategories`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getAllCategories`,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -193,7 +193,7 @@ const getAllCategories = _ => {
 
 const getBookByCategoryId = categoryId => {
     $.ajax({
-        url: `${BASE_URL}index.php?request=getBookByCategoryId`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getBookByCategoryId`,
         type: 'POST',
         data: {
             'category_id': categoryId
@@ -218,7 +218,7 @@ const showCategories = categories => {
 const getAllBooks = _ => {
     $("#category-title").html("Semua Koleksi");
     $.ajax({
-        url: `${BASE_URL}index.php?request=getAllBooks`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getAllBooks`,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -230,7 +230,7 @@ const getAllBooks = _ => {
 getAllCategories()
 getAllBooks();
 if (sessionStorage.getItem(cacheKey)) {
-    $('#top-to-banner').append(`<a href="${DEVELOPMENT_BASE_URL}admin_page/beranda.php" class="text-dark text-decoration-none ms-5">Halaman Admin</a>`)
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}information_system/app/admin_page/beranda.php" class="text-dark text-decoration-none ms-5">Halaman Admin</a>`)
 } else {
-    $('#top-to-banner').append(`<a href="${DEVELOPMENT_BASE_URL}login_page.php" class="text-dark text-decoration-none ms-5">Login</a>`)
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}information_system/app/admin_page/login_page.php" class="text-dark text-decoration-none ms-5">Login</a>`)
 }

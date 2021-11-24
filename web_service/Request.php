@@ -9,16 +9,6 @@ class Request
         $this->conn = $conn;
     }
 
-    public function login($username, $password)
-    {
-        $query = "SELECT * FROM users WHERE 
-                username='" . $this->conn->real_escape_string($username) . "' 
-                AND 
-                password='" . $this->conn->real_escape_string($password) . "'";
-        $result = $this->conn->query($query);
-        return json_encode($result->fetch_all(MYSQLI_ASSOC));
-    }
-
     public function getAllBooks()
     {
         $result = $this->conn->query("SELECT * FROM book_view");
@@ -157,9 +147,9 @@ class Request
             WHERE book_id = " . $book['book-id'];
         if ($this->conn->query($query)) {
             if (
-                $this->conn->query("DELETE FROM book_new_collection_table WHERE book_id=".$book['book-id']) >= 0
-                &&  
-                $this->conn->query("DELETE FROM book_new_publish_table WHERE book_id=".$book['book-id']) >= 0
+                $this->conn->query("DELETE FROM book_new_collection_table WHERE book_id=" . $book['book-id']) >= 0
+                &&
+                $this->conn->query("DELETE FROM book_new_publish_table WHERE book_id=" . $book['book-id']) >= 0
             ) {
                 if ($book['book-collection'] == "1") {
                     $query = "INSERT INTO book_new_collection_table (
@@ -250,7 +240,7 @@ class Request
 
     public function getNewBookCollection()
     {
-        if($result = $this->conn->query("SELECT * FROM new_book_collection_view")){
+        if ($result = $this->conn->query("SELECT * FROM new_book_collection_view")) {
             return json_encode([
                 "isSuccess" => true,
                 "data" => $result->fetch_all(MYSQLI_ASSOC)
@@ -265,7 +255,7 @@ class Request
 
     public function getNewBookPublish()
     {
-        if($result = $this->conn->query("SELECT * FROM book_new_publish_view")){
+        if ($result = $this->conn->query("SELECT * FROM book_new_publish_view")) {
             return json_encode([
                 "isSuccess" => true,
                 "data" => $result->fetch_all(MYSQLI_ASSOC)
@@ -280,19 +270,37 @@ class Request
 
     public function postAuth($username, $password)
     {
-        if($result = $this->conn->query("SELECT * FROM user_table WHERE user_username='$username' AND user_password='$password'")){
+        if ($result = $this->conn->query("SELECT * FROM user_table WHERE user_username='$username' AND user_password='$password'")) {
             if ($result->num_rows) {
+                $user = $result->fetch_all(MYSQLI_ASSOC)[0];
                 return json_encode([
                     "isSuccess" => true,
                     "message" => 'Login Successfully',
-                    "data" => $result->fetch_all(MYSQLI_ASSOC)[0]['user_username']
-                ]);   
+                    "data" => [
+                        'user_id' => $user['user_id'],
+                        'user_username' => $user['user_username']
+                    ]
+                ]);
             } else {
                 return json_encode([
                     "isSuccess" => false,
                     "message" => 'Username atau password salah!'
                 ]);
             }
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+    public function putPassword($user_id, $new_password)
+    {
+        if ($this->conn->query("UPDATE user_table SET user_password='" . $new_password . "' WHERE user_id='" . $user_id . "'")) {
+            return json_encode([
+                "isSuccess" => true,
+                "message" => 'Password Changed Successfully'
+            ]);
         } else {
             return json_encode([
                 "isSuccess" => false,

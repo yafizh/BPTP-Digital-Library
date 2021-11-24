@@ -140,10 +140,10 @@ VALUES
     (7,1,'Buku Panduan Matematika Terapan','', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Triskaidekaman', 1, 10, 5, 100, 2, 'buku-panduan-matematika.jpg', null, ''),
     (2,1,'Dunia Sophie','Sebuah Novel Filsafat', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Jostein Gaarder', 1, 10, 5, 100, 2, 'dunia-sophie.jpg', null, ''),
     (6,1,'Evolusi','Dari Teori ke Fakta', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Ernst Mayr', 1, 10, 5, 100, 2, 'evolusi.jpg', null, ''),
-    (8,1,'How to be a Brilliant Thinker','Latih pikiran Anda dan temukan solusi-solusi kreatif', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Paul Sloane', 1, 10, 5, 100, 2, 'how-to-be-a-brilliant-thinker.jpg', null, ''),
+    (8,1,'How to be a Brilliant Thinker','Latih pikiran Anda dan temukan solusi-solusi kreatif', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Paul Sloane', 1, 10, 5, 100, 2, 'ho-to-be.jpg', null, ''),
     (2,1,'How To Die','Sebuah Panduan Klasik Menjelang Ajal', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Seneca', 1, 10, 5, 100, 2, 'how-to-die.jpg', null, ''),
     (7,1,'I Want to Die but I Want to Eat Tteokpokki','', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Baek Se Hee', 1, 10, 5, 100, 2, 'i-want-to-die.jpg', null, ''),
-    (6,1,'Sebuah Seni Untuk Bersikap Bodo Amat','', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Mark Manson', 1, 10, 5, 100, 2, 'sebuah-seni-untuk-bersikap-bodo-amat.jpg', null, ''),
+    (6,1,'Sebuah Seni Untuk Bersikap Bodo Amat','', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Mark Manson', 1, 10, 5, 100, 2, 'sebuah-seni.jpg', null, ''),
     (6,1,'Madilog','Materialisme, Dialektika, dan Logika', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Tan Malaka', 1, 10, 5, 100, 2, 'tan-malaka.jpg', null, ''),
     (6,1,'Underground A Novel','', '555', '555', 'PT Gramedia', 'Martapura', '2000-05-10', 'Ika Natassa', 1, 10, 5, 100, 2, 'undergroud.jpg', null, '');
     

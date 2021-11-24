@@ -14,12 +14,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- CONFIG -->
-    <script src="../const/config.js"></script>
-    <?php require_once "../const/config.php" ?>
+    <script src="<?= '../../../CONFIGURATION.js' ?>"></script>
+    <?php require_once "../../../CONFIGURATION.php"; ?>
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.10/dist/sweetalert2.all.min.js"></script>
-    
+
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
@@ -28,6 +28,9 @@
     <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
+
+    <!-- Icons -->
+    <?php require_once "../../assets/icon_source.php" ?>
 
     <!-- Custom styles for this template -->
     <style>

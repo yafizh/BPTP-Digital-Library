@@ -5,6 +5,8 @@ $apiService = new Request($conn);
 if (isset($_GET['request'])) {
     if ($_GET['request'] == 'postAuth') {
         echo $apiService->postAuth($_POST['username'], $_POST['password']);
+    } else if ($_GET['request'] == 'putPassword') {
+        echo $apiService->putPassword($_POST['user-id'], $_POST['new-password']);
     } else if ($_GET['request'] == 'getAllBooks') {
         echo $apiService->getAllBooks();
     } else if ($_GET['request'] == 'getAllCategories') {
