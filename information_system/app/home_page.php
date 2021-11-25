@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog Template · Bootstrap v5.0</title>
+    <title>Perpustakaan BPTP KALSEL</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Favicons 
-        -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -86,6 +85,7 @@
     </style>
 
     <link rel="stylesheet" href="styles/home_page.css">
+    <link rel="stylesheet" href="styles/scrollbar-and-screen.css">
 </head>
 
 <body>
@@ -100,17 +100,14 @@
     <div class="bg-success mb-5" style="border-bottom: 4px solid yellow;">
         <header class="container blog-header py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-4 pt-1 d-flex">
-                    <img src="logo.png" width="80" alt="">
+                <div class="col-6 col-md-6 pt-1 d-flex">
+                    <img src="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>web_service/assets/img/logo.png" id="img-banner">
                     <div class="ms-4 mt-1 text-white">
                         <h4>PERPUSTAKAAN BPTP</h4>
                         <h4>KALIMANTAN SELATAN</h4>
                     </div>
                 </div>
-                <div class="col-4 text-center">
-                    <!-- <a class="blog-header-logo text-dark" href="#" style="text-decoration: none;">PERPUSTAKAAN BPTP</a> -->
-                </div>
-                <div class="col-4 d-flex justify-content-end align-items-center">
+                <div class="col-6 col-md-4 d-flex justify-content-end align-items-center">
                     <div class="w-100">
                         <label for="book-search" class="form-label text-white">Pencarian Koleksi</label>
                         <input type="text" name="book-search" id="book-search" autofocus placeholder="Cari Judul, Pengarang, Nomor ISBN, Penerbit" class="form-control">
@@ -130,7 +127,7 @@
 
     <main class="container">
         <h2 class="mb-4" id="category-title">Semua Koleksi</h2>
-        <div class="row row-col-1 row-cols-md-6 g-4" id="book-containerrr"></div>
+        <div class="row justify-content-center g-4" id="book-containerrr"></div>
     </main>
 
 

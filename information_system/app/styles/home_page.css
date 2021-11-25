@@ -22,3 +22,9 @@
 .collection:hover>.img-overplay {
     display: inline;
 }
+
+/* Banner */
+#img-banner {
+    max-width: 80px;
+    object-fit: contain;
+}

@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buku Tamu</title>
+  <title>Halaman Login</title>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,7 +63,7 @@
   <main class="form-signin">
     <form>
       <div class="bg-white border p-5">
-        <img class="mb-4" src="logo.png" alt="" width="100">
+        <img class="mb-4" src="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>web_service/assets/img/logo.png" alt="" width="100">
         <h1 class="h3 mb-3 fw-normal">Silakan Login</h1>
 
         <div class="form-floating">

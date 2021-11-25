@@ -1,3 +1,3 @@
 <?php 
-    require_once "const/config.php";
-    header("Location: ".BASE_URL."login_page.php");
+    require_once "../../CONFIGURATION.php";
+    header("Location: ".(IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL)."information_system/app/home_page.php");

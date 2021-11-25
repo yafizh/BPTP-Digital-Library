@@ -63,7 +63,7 @@ const showBook = callback => {
                                     </div>
                                 </div>
                             `;
-        const book = $('<div class="col collection"></div>');
+        const book = $('<div class="col-auto collection"></div>');
         book.html(
             `
                     ${sessionStorage.getItem(cacheKey) ? admin_overplay : user_overplay}
