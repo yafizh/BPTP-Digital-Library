@@ -238,9 +238,9 @@ class Request
         }
     }
 
-    public function getBookByTitleAuthorISBNPublisherd($keyword)
+    public function getBookByTitleAuthorISBNPublisher($keyword)
     {
-        $query = "SELECT * FROM book_table WHERE 
+        $query = "SELECT * FROM book_view WHERE 
                 book_title LIKE '%" . $keyword . "%' 
                 OR 
                 book_sub_title LIKE '%" . $keyword . "%' 
@@ -252,6 +252,39 @@ class Request
                 book_classification_number LIKE '%" . $keyword . "%' 
                 OR 
                 book_publisher LIKE '%" . $keyword . "%'
+        ";
+
+        if ($result = $this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "data" => $result->fetch_all(MYSQLI_ASSOC)
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function getBookByTitleAuthorISBNPublisherInCategory($keyword, $categoryId)
+    {
+        $query = "SELECT * FROM book_view WHERE 
+                (
+                book_title LIKE '%" . $keyword . "%' 
+                OR 
+                book_sub_title LIKE '%" . $keyword . "%' 
+                OR 
+                book_isbn_number LIKE '%" . $keyword . "%' 
+                OR 
+                book_author LIKE '%" . $keyword . "%' 
+                OR 
+                book_classification_number LIKE '%" . $keyword . "%' 
+                OR 
+                book_publisher LIKE '%" . $keyword . "%'
+                )
+                AND
+                category_id = '".$categoryId."'
         ";
 
         if ($result = $this->conn->query($query)) {

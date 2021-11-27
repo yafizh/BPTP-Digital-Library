@@ -20,7 +20,9 @@ if (isset($_GET['request'])) {
     } else if ($_GET['request'] == 'getBookByCategoryId') {
         echo $apiService->getBookByCategoryId($_POST['category_id']);
     } else if ($_GET['request'] == 'getBookByTitleAuthorISBNPublisher') {
-        echo $apiService->getBookByTitleAuthorISBNPublisherd($_POST['keyword']);
+        echo $apiService->getBookByTitleAuthorISBNPublisher($_POST['keyword']);
+    } else if ($_GET['request'] == 'getBookByTitleAuthorISBNPublisher') {
+        echo $apiService->getBookByTitleAuthorISBNPublisherInCategory($_POST['keyword'], $_POST['category_id']);
     } else if ($_GET['request'] == 'getNewBookCollection') {
         echo $apiService->getNewBookCollection();
     } else if ($_GET['request'] == 'getNewBookPublish') {
