@@ -109,7 +109,8 @@
                     } else {
                         Swal.fire({
                             title: 'Gagal Menambahkan Data',
-                            icon: 'error'
+                            icon: 'error',
+                            showConfirmButton: false
                         });
                     }
                 },

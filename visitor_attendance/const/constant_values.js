@@ -1,1 +1,0 @@
-const cacheKey = "USER_LOGGED";

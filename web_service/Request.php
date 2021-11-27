@@ -9,6 +9,35 @@ class Request
         $this->conn = $conn;
     }
 
+    public function postGuest($guest)
+    {
+        $query = "INSERT INTO guest_table (
+            book_category_id,
+            guest_full_name,
+            guest_come_date_time,
+            guest_come_reason,
+            guest_profession 
+        ) VALUES (
+            '" . $guest['book-category-id'] . "',
+            '" . $guest['guest-full-name'] . "',
+            '" . $guest['guest-come-date-time'] . "',
+            '" . $guest['guest-come-reason'] . "',
+            '" . $guest['guest-profession'] . "'
+        )";
+
+        if ($this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "message" => "New record created successfully"
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
     public function getAllBooks()
     {
         $result = $this->conn->query("SELECT * FROM book_view");

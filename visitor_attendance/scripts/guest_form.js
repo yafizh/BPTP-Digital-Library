@@ -1,31 +1,28 @@
 const university = `
     <div class="col-12 added">
-        <label for="country" class="form-label">Nama Universitas</label>
-        <select class="form-select" id="country" required>
+        <label for="guest-university" class="form-label">Nama Universitas</label>
+        <select class="form-select" name="guest-university" id="guest-university" required>
             <option value="">Pilih Universitas</option>
-            <option>Universitas Lambung Mangkurat</option>
-            <option>Universitas Islam Kalimantan</option>
-            <option>Sekolah Tinggi Manajemen Informatika dan Komputer</option>
+            <option value="Universitas Lambung Mangkurat">Universitas Lambung Mangkurat</option>
+            <option value="Universitas Islam Kalimantan">Universitas Islam Kalimantan</option>
+            <option value="Sekolah Tinggi Manajemen Informatika dan Komputer">Sekolah Tinggi Manajemen Informatika dan Komputer</option>
         </select>
-        <div class="invalid-feedback">
-            Please select a valid country.
-        </div>
     </div>
     <div class="col-12 added">
-        <label for="country" class="form-label">Fakultas</label>
-        <select class="form-select" id="country" required>
+        <label for="guest-study-program" class="form-label">Fakultas</label>
+        <select class="form-select" id="guest-study-program" name="guest-study-program" required>
             <option value="">Pilih Fakultas</option>
-            <option>Teknologi Informasi</option>
-            <option>Ilmu Humaniora</option>
-            <option>Ilmu Sosial</option>
+            <option value="Teknologi Informasi">Teknologi Informasi</option>
+            <option value="Ilmu Humaniora">Ilmu Humaniora</option>
+            <option value="Ilmu Sosial">Ilmu Sosial</option>
         </select>
     </div>
 `;
 
 const employees = `
     <div class="col-12 added">
-        <label for="country" class="form-label">Bagian Umum</label>
-        <select class="form-select" id="country" required>
+        <label for="guest-division" class="form-label">Bagian Umum</label>
+        <select class="form-select" name="guest-division" id="guest-division" required>
             <option value="">Pilih Bagian</option>
             <option>Peneliti</option>
             <option>Penyuluh</option>
@@ -34,7 +31,7 @@ const employees = `
     </div>
 `;
 
-$('#guest_profession').on('change', function () {
+$('#guest-profession').on('change', function () {
     $(".added").remove();
     if ($(this).val() === 'STUDENT')
         $("#guest_profession_field").after(university)
@@ -42,7 +39,56 @@ $('#guest_profession').on('change', function () {
         $("#guest_profession_field").after(employees)
 });
 
-$("form").on("submit", function(e){
+$("form").on("submit", function (e) {
     e.preventDefault();
-    location.replace("thanks.php");
+    let guest_data = {
+        "book-category-id": $("#book-category").val(),
+        "guest-full-name": $("#full-name").val(),
+        "guest-come-date-time": $("#date-come").val() + " " + $("#time-come").val(),
+        "guest-come-reason": $("#visit_purpose").val(),
+        "guest-profession": $("#guest-profession option:selected").val()
+    };
+    if ($("#guest-profession").val() === 'STUDENT') {
+        guest_data["guest-profession"] = JSON.stringify(
+            {
+                "guest-university": $("#guest-university option:selected").text(),
+                "guest-study-program": $("#guest-study-program option:selected").text()
+            }
+        );
+    }
+    else if ($("#guest-profession").val() === 'BPTP_EMPLOYEE') {
+        guest_data["guest-profession"] = JSON.stringify(
+            {
+                "guest-division": $("#guest-division option:selected").text(),
+            }
+        );
+    }
+    $.ajax({
+        url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/?request=postGuest`,
+        type: 'POST',
+        data: {
+            "guest": guest_data
+        },
+        dataType: 'json',
+        success: function (response) {
+            if (response.isSuccess) {
+                Swal.fire({
+                    title: 'Berhasil Mengisi Buku Tamu',
+                    icon: 'success',
+                    showConfirmButton: false
+                }).then((result) => {
+                    if (result.isDismissed) {
+                        location.replace(`${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}visitor_attendance`);
+                    }
+                });
+            } else {
+                console.log(response);
+                Swal.fire({
+                    title: 'Gagal Mengisi Buku Tamu',
+                    icon: 'error',
+                    showConfirmButton: false
+                });
+            }
+        }
+    });
 });

@@ -68,7 +68,7 @@ const showBook = callback => {
             `
                     ${sessionStorage.getItem(cacheKey) ? admin_overplay : user_overplay}
                     <div class="card p-0 shadow-sm" style="width: 12rem; height: 25rem;">
-                        <img style="height:280px; object-fit:cover;" src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}">
+                        <img alt="Gambar Tidak Tersedia" style="height:280px; object-fit:cover;" src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}">
                         <div class="card-body">
                             <h5 
                                 class="card-title book-title" 

@@ -81,3 +81,12 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #146C43;
 }
+
+
+/*  */
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Comic Neue', cursive;
+}

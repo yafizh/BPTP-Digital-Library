@@ -126,7 +126,8 @@
                     } else {
                         Swal.fire({
                             title: 'Gagal Mengedit Data',
-                            icon: 'error'
+                            icon: 'error',
+                            showConfirmButton: false
                         });
                     }
                 },
