@@ -45,12 +45,12 @@ $("form").on("submit", function (e) {
         "book-category-id": $("#book-category").val(),
         "guest-full-name": $("#full-name").val(),
         "guest-come-date-time": $("#date-come").val() + " " + $("#time-come").val(),
-        "guest-come-reason": $("#visit_purpose").val(),
-        "guest-profession": $("#guest-profession option:selected").val()
+        "guest-come-reason": $("#visit_purpose").val()
     };
     if ($("#guest-profession").val() === 'STUDENT') {
         guest_data["guest-profession"] = JSON.stringify(
             {
+                "guest-profession": $("#guest-profession option:selected").val(),
                 "guest-university": $("#guest-university option:selected").text(),
                 "guest-study-program": $("#guest-study-program option:selected").text()
             }
@@ -59,10 +59,18 @@ $("form").on("submit", function (e) {
     else if ($("#guest-profession").val() === 'BPTP_EMPLOYEE') {
         guest_data["guest-profession"] = JSON.stringify(
             {
+                "guest-profession": $("#guest-profession option:selected").val(),
                 "guest-division": $("#guest-division option:selected").text(),
             }
         );
+    } else {
+        guest_data["guest-profession"] = JSON.stringify(
+            {
+                "guest-profession": $("#guest-profession option:selected").val(),
+            }
+        );
     }
+
     $.ajax({
         url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/?request=postGuest`,
         type: 'POST',

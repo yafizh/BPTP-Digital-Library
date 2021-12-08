@@ -7,10 +7,40 @@ if (isset($_GET['request'])) {
         echo $apiService->postAuth($_POST['username'], $_POST['password']);
     } else if ($_GET['request'] == 'postGuest') {
         echo $apiService->postGuest($_POST['guest']);
-    } else if ($_GET['request'] == 'putPassword') {
+    } else if ($_GET['request'] == 'postWebsiteGuest') {
+        $guestWebsite = [
+            "website_guest_ip_public" => $_POST['website_guest_ip_public'],
+            "website_guest_date_time_enter" => $_POST['website_guest_date_time_enter']
+        ];
+        echo $apiService->postWebsiteGuest($guestWebsite);
+    } else if ($_GET['request'] == 'postWebsiteBookViews') {
+        $websiteBookViews = [
+            "book_id" => $_POST['book_id'],
+            "website_guest_id" => $_POST['website_guest_id'],
+            "website_book_views_date_time_reading" => $_POST['website_book_views_date_time_reading']
+        ];
+        echo $apiService->postWebsiteBookViews($websiteBookViews);
+    }  else if ($_GET['request'] == 'postAndroidGuest') {
+        $guestAndroid = [
+            "android_guest_ip_public" => $_POST['android_guest_ip_public'],
+            "android_guest_date_time_enter" => $_POST['android_guest_date_time_enter']
+        ];
+        echo $apiService->postAndroidGuest($guestAndroid);
+    } else if ($_GET['request'] == 'postAndroidBookViews') {
+        $androidBookViews = [
+            "book_id" => $_POST['book_id'],
+            "android_guest_id" => $_POST['android_guest_id'],
+            "android_book_views_date_time_reading" => $_POST['android_book_views_date_time_reading']
+        ];
+        echo $apiService->postAndroidBookViews($androidBookViews);
+    }  else if ($_GET['request'] == 'putPassword') {
         echo $apiService->putPassword($_POST['user-id'], $_POST['new-password']);
     } else if ($_GET['request'] == 'getAllBooks') {
         echo $apiService->getAllBooks();
+    } else if ($_GET['request'] == 'getGuest') {
+        echo $apiService->getGuest();
+    } else if ($_GET['request'] == 'postCustomQuery') {
+        echo $apiService->postCustomQuery($_POST['query']);
     } else if ($_GET['request'] == 'getAllCategories') {
         echo $apiService->getAllCategories();
     } else if ($_GET['request'] == 'getAllLanguages') {
@@ -21,12 +51,14 @@ if (isset($_GET['request'])) {
         echo $apiService->getBookByCategoryId($_POST['category_id']);
     } else if ($_GET['request'] == 'getBookByTitleAuthorISBNPublisher') {
         echo $apiService->getBookByTitleAuthorISBNPublisher($_POST['keyword']);
-    } else if ($_GET['request'] == 'getBookByTitleAuthorISBNPublisher') {
+    } else if ($_GET['request'] == 'getBookByTitleAuthorISBNPublisherInCategory') {
         echo $apiService->getBookByTitleAuthorISBNPublisherInCategory($_POST['keyword'], $_POST['category_id']);
     } else if ($_GET['request'] == 'getNewBookCollection') {
         echo $apiService->getNewBookCollection();
     } else if ($_GET['request'] == 'getNewBookPublish') {
         echo $apiService->getNewBookPublish();
+    } else if ($_GET['request'] == 'getGuest') {
+        echo $apiService->getGuest();
     } else if ($_GET['request'] == 'postBook') {
         $image_uploaded = false;
         $file_uploaded = false;
@@ -57,7 +89,7 @@ if (isset($_GET['request'])) {
                 'book-title' => $_POST['book-title'],
                 'book-sub-title' => $_POST['book-sub-title'],
                 'book-classification-number' => $_POST['book-classification-number'],
-                'book-isbn-number' => $_POST['book-isbn-number'],
+                'book-isbn-postWebsiteBookViewspostWebsiteBookViews' => $_POST['book-isbn-postWebsiteBookViewspostWebsiteBookViews'],
                 'book-publisher' => $_POST['book-publisher'],
                 'book-publish-place' => $_POST['book-publish-place'],
                 'book-publish-date' => $_POST['book-publish-date'],
@@ -106,7 +138,7 @@ if (isset($_GET['request'])) {
                 'book-title' => $_POST['book-title'],
                 'book-sub-title' => $_POST['book-sub-title'],
                 'book-classification-number' => $_POST['book-classification-number'],
-                'book-isbn-number' => $_POST['book-isbn-number'],
+                'book-isbn' => $_POST['book-isbn'],
                 'book-publisher' => $_POST['book-publisher'],
                 'book-publish-place' => $_POST['book-publish-place'],
                 'book-publish-date' => $_POST['book-publish-date'],

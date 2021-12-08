@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,7 +64,6 @@
       <div class="bg-white border p-5">
         <img class="mb-4" src="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>web_service/assets/img/logo.png" alt="" width="100">
         <h1 class="h3 mb-3 fw-normal">Silakan Login</h1>
-
         <div class="form-floating">
           <input type="text" class="form-control" id="username" name="username" placeholder="Username">
           <label for="username">Username</label>

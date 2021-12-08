@@ -1,3 +1,60 @@
+let reading_book_push;
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+if (!getCookie('website_guest_ip_public')) {
+    setCookie('website_guest_ip_public', '192.168.1.1', 1)
+    const today = new Date();
+    const date_time = (
+        today.getFullYear()
+        + '-' +
+        (today.getMonth() + 1)
+        + '-' +
+        today.getDate()
+        + " " +
+        today.getHours()
+        + ":" +
+        today.getMinutes()
+        + ":" +
+        today.getSeconds()
+    );
+    $.ajax({
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/?request=postWebsiteGuest`,
+        type: 'POST',
+        data: {
+            'website_guest_ip_public': getCookie('website_guest_ip_public'),
+            'website_guest_date_time_enter': date_time
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response)
+            if(response.isSuccess) {
+                setCookie('website_guest_id', response.data.website_guest_id, 1)
+            }
+        },
+    });
+}
+
 const deleteBook = book_id => {
     Swal.fire({
         title: 'Yakin ingin menghapus data ini?',
@@ -12,7 +69,7 @@ const deleteBook = book_id => {
     }).then((resutlt) => {
         if (resutlt.isConfirmed) {
             $.ajax({
-                url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=deleteBookByBookId`,
+                url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/index.php?request=deleteBookByBookId`,
                 type: 'POST',
                 data: {
                     "book_id": book_id
@@ -42,6 +99,9 @@ const deleteBook = book_id => {
 
 }
 
+$("#exampleModal").on('hidden.bs.modal', function () {
+    clearTimeout(reading_book_push);
+});
 $('#book-search').val('')
 const showBook = callback => {
     $('#book-containerrr').html('');
@@ -68,7 +128,7 @@ const showBook = callback => {
             `
                     ${sessionStorage.getItem(cacheKey) ? admin_overplay : user_overplay}
                     <div class="card p-0 shadow-sm" style="width: 12rem; height: 25rem;">
-                        <img alt="Gambar Tidak Tersedia" style="height:280px; object-fit:cover;" src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}">
+                        <img alt="Gambar Tidak Tersedia" style="height:280px; object-fit:cover;" src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}">
                         <div class="card-body">
                             <h5 
                                 class="card-title book-title" 
@@ -83,7 +143,7 @@ const showBook = callback => {
             $(book).on('click', function () {
                 $("#exampleModal .modal-body").html(`
                                 <div class="d-flex justify-content-center">
-                                    <img src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}" style="max-height: 300px;">
+                                    <img src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/${IMAGE_COVER_RESOURCE}${value.book_cover_uri}" style="max-height: 300px;">
                                 </div>
                                 <div class="mt-3">
                                     <div class="d-flex">
@@ -96,7 +156,7 @@ const showBook = callback => {
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">Nomor ISBN</div>
-                                        <div class="col">${value.book_isbn_number}</div>
+                                        <div class="col">${value.book_isbn}</div>
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">Penerbit</div>
@@ -116,20 +176,20 @@ const showBook = callback => {
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">Kategori</div>
-                                        <div class="col">${value.book_category}</div>
+                                        <div class="col">${capitalizeTheFirstLetterOfEachWord(value.book_category)}</div>
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">Bahasa</div>
-                                        <div class="col">${value.book_language}</div>
+                                        <div class="col">${capitalizeTheFirstLetterOfEachWord(value.book_language)}</div>
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">Lokasi</div>
-                                        <div class="col">${value.book_classification_number}</div>
+                                        <div class="col">Rak ${value.book_classification_number}</div>
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">File Digital</div>
                                         <div class="col">
-                                            <a href="#" onclick="window.open('${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/${FILE_RESOURCE}${value.book_file_uri}', '_blank', 'fullscreen=yes'); return false;">Klik disini</a>
+                                            ${value.book_file_uri == null ? "File digital tidak tersedia" : `<a href="#" onclick="reading_book('${value.book_id}','${value.book_file_uri}');">Klik disini</a>`}
                                         </div>
                                     </div>
                                 </div>
@@ -141,10 +201,44 @@ const showBook = callback => {
     });
 
 }
+const reading_book = (book_id, book_file_uri) => {
+    reading_book_push = setTimeout(function () {
+        if (getCookie('website_guest_ip_public')) {
+            const today = new Date();
+            const date_time = (
+                today.getFullYear()
+                + '-' +
+                (today.getMonth() + 1)
+                + '-' +
+                today.getDate()
+                + " " +
+                today.getHours()
+                + ":" +
+                today.getMinutes()
+                + ":" +
+                today.getSeconds()
+            );
+            $.ajax({
+                url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/?request=postWebsiteBookViews`,
+                type: 'POST',
+                data: {
+                    "book_id": book_id,
+                    "website_guest_id": getCookie('website_guest_id'),
+                    "website_book_views_date_time_reading": date_time
+                },
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response)
+                },
+            });
+        }
+    }, 60000); // 1 Minute
+    window.open(`${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/${FILE_RESOURCE}${book_file_uri}`, '_blank', 'fullscreen=yes'); return false;
+}
 
 const searchBook = keyword => {
     $.ajax({
-        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getBookByTitleAuthorISBNPublisher`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/index.php?request=getBookByTitleAuthorISBNPublisher`,
         type: 'POST',
         data: {
             'keyword': keyword
@@ -165,7 +259,7 @@ $('#book-search').on('input', function () {
 
 const editBook = book_id => {
     $.ajax({
-        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getBookByBookId`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/index.php?request=getBookByBookId`,
         type: 'POST',
         data: {
             "book_id": book_id
@@ -181,7 +275,7 @@ const editBook = book_id => {
 }
 const getAllCategories = _ => {
     $.ajax({
-        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getAllCategories`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/index.php?request=getAllCategories`,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -193,7 +287,7 @@ const getAllCategories = _ => {
 
 const getBookByCategoryId = categoryId => {
     $.ajax({
-        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getBookByCategoryId`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/index.php?request=getBookByCategoryId`,
         type: 'POST',
         data: {
             'category_id': categoryId
@@ -218,7 +312,7 @@ const showCategories = categories => {
 const getAllBooks = _ => {
     $("#category-title").html("Semua Koleksi");
     $.ajax({
-        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/index.php?request=getAllBooks`,
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/index.php?request=getAllBooks`,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -230,7 +324,7 @@ const getAllBooks = _ => {
 getAllCategories()
 getAllBooks();
 if (sessionStorage.getItem(cacheKey)) {
-    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}information_system/app/admin_page/beranda.php" class="text-dark text-decoration-none ms-5">Halaman Admin</a>`)
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}information_system/app/admin_page/beranda.php" class="text-dark text-decoration-none ms-5">Halaman Admin</a>`)
 } else {
-    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}information_system/app/admin_page/login_page.php" class="text-dark text-decoration-none ms-5">Login</a>`)
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}information_system/app/admin_page/login_page.php" class="text-dark text-decoration-none ms-5">Login</a>`)
 }

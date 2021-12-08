@@ -3,20 +3,28 @@
 <body>
     <main>
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <svg class="bi me-5" width="40" height="32">
                     <use xlink:href="#bootstrap" />
                 </svg>
                 <span class="fs-4">Admin</span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/beranda.php" class="nav-link link-dark" aria-current="page" id="beranda">
+                <li>
+                    <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/home_page.php" class="nav-link link-dark">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#home" />
                         </svg>
-                        Beranda
+                        Halaman Utama
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/beranda.php" class="nav-link link-dark" aria-current="page" id="beranda">
+                        <svg class="bi me-2" width="16" height="16">
+                            <use xlink:href="#speedometer2" />
+                        </svg>
+                        Dashboard
                     </a>
                 </li>
                 <li>
@@ -44,7 +52,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/login_page.php" class="nav-link link-dark">
+                    <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/login_page.php" class="nav-link link-dark">
                         <svg class="bi me-2" width="16" height="16">
                             <use xlink:href="#logout" />
                         </svg>
@@ -65,11 +73,72 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Katalog</h5>
-                        <p class="card-text">Laporan jumlah seluruh katalog yang telah dimasukkan dan seluruh buku di perpustakaan BPTP kalsel.</p>
+                        <p class="card-text"></p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>300</strong> Buku Online</li>
                         <li class="list-group-item"><strong>3000</strong> Koleksi Perpustakaan</li>
+                        <li class="list-group-item"><strong>3000</strong> Koleksi Perpustakaan</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/detail_page.php" class="card-link link-light btn bg-primary">Detail Data</a>
+                        <a href="#" class="card-link btn link-light bg-primary">
+                            <svg class="me-1" width="20" height="20">
+                                <use xlink:href="#print" />
+                            </svg>
+                            Cetak Laporan
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card me-2" style="width: 23rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Laporan Pengunjung</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Minggu ini</li>
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Bulan ini</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/detail_page2.php" class="card-link link-light btn bg-primary">Detail Data</a>
+                        <!-- <a href="#" class="card-link btn link-light bg-primary">
+                            <svg class="me-1" width="20" height="20">
+                                <use xlink:href="#print" />
+                            </svg>
+                            Cetak Laporan
+                        </a> -->
+                    </div>
+                </div>
+
+                <div class="card me-2" style="width: 23rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Laporan Pengunjung Website</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Minggu ini</li>
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Bulan ini</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/detail_page3.php" class="card-link link-light btn bg-primary">Detail Data</a>
+                        <!-- <a href="#" class="card-link btn link-light bg-primary">
+                            <svg class="me-1" width="20" height="20">
+                                <use xlink:href="#print" />
+                            </svg>
+                            Cetak Laporan
+                        </a> -->
+                    </div>
+                </div>
+
+                <div class="card me-2" style="width: 23rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Laporan Pengunjung Android</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Minggu ini</li>
+                        <li class="list-group-item"><strong>10</strong> Pengunjung Bulan ini</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
@@ -84,72 +153,12 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung</h5>
-                        <p class="card-text">Laporan jumlah seluruh katalog yang telah dimasukkan dan seluruh buku di perpustakaan BPTP kalsel.</p>
+                        <h5 class="card-title">Laporan Buku dibaca</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>500</strong> Total Pengunjung</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
-                        <a href="#" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card me-2" style="width: 23rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung</h5>
-                        <p class="card-text">Laporan jumlah seluruh katalog yang telah dimasukkan dan seluruh buku di perpustakaan BPTP kalsel.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>500</strong> Total Pengunjung</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
-                        <a href="#" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card me-2" style="width: 23rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung</h5>
-                        <p class="card-text">Laporan jumlah seluruh katalog yang telah dimasukkan dan seluruh buku di perpustakaan BPTP kalsel.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>500</strong> Total Pengunjung</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
-                        <a href="#" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card me-2" style="width: 23rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung</h5>
-                        <p class="card-text">Laporan jumlah seluruh katalog yang telah dimasukkan dan seluruh buku di perpustakaan BPTP kalsel.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>500</strong> Total Pengunjung</li>
+                        <li class="list-group-item"><strong>10</strong> Dibaca di BPTP</li>
+                        <li class="list-group-item"><strong>500</strong> Dibaca di Website</li>
+                        <li class="list-group-item"><strong>500</strong> Dibaca di Android</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>

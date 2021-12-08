@@ -11,7 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 
-
+    <!-- CONFIG -->
+    <script src="<?= '../../../CONFIGURATION.js' ?>"></script>
+    <?php require_once "../../../CONFIGURATION.php"; ?>
 
 
     <!-- Bootstrap core CSS -->
@@ -84,7 +86,7 @@
 </head>
 
 <body>
-    <?php require_once "../assets/icon_source.php" ?>
+    <?php require_once "../../assets/icon_source.php" ?>
 
     <!-- Banner -->
     <div class="bg-success mb-5" style="border-bottom: 4px solid yellow;">
@@ -199,8 +201,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
-    <script src="const/constant_values.js"></script>
-    <script src="const/config.js"></script>
 </body>
 
 </html>

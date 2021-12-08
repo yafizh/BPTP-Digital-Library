@@ -1,3 +1,7 @@
+<?php
+    // setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+?>
 <?php date_default_timezone_set('Asia/Kuala_Lumpur'); ?>
 <!doctype html>
 <html lang="en">
@@ -18,6 +22,8 @@
     <!-- CONFIG -->
     <script src="<?= '../../CONFIGURATION.js' ?>"></script>
     <?php require_once "../../CONFIGURATION.php"; ?>
+
+    <script src="./utils/helper.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -91,8 +97,7 @@
 <body>
     <div class="w-100 bg-white">
         <div class="container d-flex justify-content-end p-1" id="top-to-banner">
-            <a href="#" class="link-dark text-decoration-none ms-5">Tentang Kami</a>
-            <a href="#" class="link-dark text-decoration-none ms-5">Butuh Bantuan?</a>
+            <a href="#" class="link-dark text-decoration-none ms-5">Versi Mobile</a>
         </div>
     </div>
 
@@ -129,7 +134,6 @@
         <h2 class="mb-4" id="category-title">Semua Koleksi</h2>
         <div class="row justify-content-center g-4" id="book-containerrr"></div>
     </main>
-
 
     <?php require_once 'utils/simple_modal.html' ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

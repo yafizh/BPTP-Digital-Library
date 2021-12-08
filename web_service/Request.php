@@ -64,7 +64,7 @@ class Request
 
     public function getBookByCategoryId($categoryId)
     {
-        $result = $this->conn->query("SELECT * FROM book_table WHERE book_category_id = " . $categoryId);
+        $result = $this->conn->query("SELECT * FROM book_view WHERE book_category_id = " . $categoryId);
         return json_encode($result->fetch_all(MYSQLI_ASSOC));
     }
 
@@ -76,7 +76,7 @@ class Request
             book_title,
             book_sub_title,
             book_classification_number,
-            book_isbn_number,
+            book_isbn,
             book_publisher,
             book_publish_place,
             book_publish_date,
@@ -95,7 +95,7 @@ class Request
             '" . $book['book-title'] . "',
             '" . $book['book-sub-title'] . "',
             '" . $book['book-classification-number'] . "',
-            '" . $book['book-isbn-number'] . "',
+            '" . $book['book-isbn'] . "',
             '" . $book['book-publisher'] . "',
             '" . $book['book-publish-place'] . "',
             '" . $book['book-publish-date'] . "',
@@ -160,7 +160,7 @@ class Request
             book_title = '" . $book['book-title'] . "',
             book_sub_title = '" . $book['book-sub-title'] . "',
             book_classification_number = '" . $book['book-classification-number'] . "',
-            book_isbn_number = '" . $book['book-isbn-number'] . "',
+            book_isbn = '" . $book['book-isbn'] . "',
             book_publisher = '" . $book['book-publisher'] . "',
             book_publish_place = '" . $book['book-publish-place'] . "',
             book_publish_date = '" . $book['book-publish-date'] . "',
@@ -245,7 +245,7 @@ class Request
                 OR 
                 book_sub_title LIKE '%" . $keyword . "%' 
                 OR 
-                book_isbn_number LIKE '%" . $keyword . "%' 
+                book_isbn LIKE '%" . $keyword . "%' 
                 OR 
                 book_author LIKE '%" . $keyword . "%' 
                 OR 
@@ -269,22 +269,22 @@ class Request
 
     public function getBookByTitleAuthorISBNPublisherInCategory($keyword, $categoryId)
     {
-        $query = "SELECT * FROM book_view WHERE 
+        $query = "SELECT * FROM book_table WHERE 
                 (
                 book_title LIKE '%" . $keyword . "%' 
                 OR 
                 book_sub_title LIKE '%" . $keyword . "%' 
                 OR 
-                book_isbn_number LIKE '%" . $keyword . "%' 
+                book_isbn LIKE '%" . $keyword . "%' 
                 OR 
                 book_author LIKE '%" . $keyword . "%' 
                 OR 
                 book_classification_number LIKE '%" . $keyword . "%' 
                 OR 
                 book_publisher LIKE '%" . $keyword . "%'
-                )
-                AND
-                category_id = '".$categoryId."'
+                ) 
+                AND 
+                book_category_id = '" . $categoryId . "'
         ";
 
         if ($result = $this->conn->query($query)) {
@@ -362,6 +362,133 @@ class Request
             return json_encode([
                 "isSuccess" => true,
                 "message" => 'Password Changed Successfully'
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function postWebsiteGuest($guestWebsite)
+    {
+        $query = "INSERT INTO website_guest_table (
+                    website_guest_ip_public, 
+                    website_guest_date_time_enter
+                ) VALUES (
+                    '" . $guestWebsite['website_guest_ip_public'] . "',
+                    '" . $guestWebsite['website_guest_date_time_enter'] . "'
+                )";
+        if ($this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "data" => [
+                    'website_guest_id' => $this->conn->insert_id
+                ]
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function postWebsiteBookViews($websiteBookViews)
+    {
+        $query = "INSERT INTO website_book_views_table (
+            book_id, 
+            website_guest_id,
+            website_book_views_date_time_reading
+        ) VALUES (
+            '" . $websiteBookViews['book_id'] . "',
+            '" . $websiteBookViews['website_guest_id'] . "',
+            '" . $websiteBookViews['website_book_views_date_time_reading'] . "'
+        )";
+        if ($this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "message" => "Successfully"
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function postAndroidGuest($guestAndroid)
+    {
+        $query = "INSERT INTO android_guest_table (
+                    android_guest_ip_public, 
+                    android_guest_date_time_enter
+                ) VALUES (
+                    '" . $guestAndroid['android_guest_ip_public'] . "',
+                    '" . $guestAndroid['android_guest_date_time_enter'] . "'
+                )";
+        if ($this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "data" => [
+                    'android_guest_id' => $this->conn->insert_id
+                ]
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function postAndroidBookViews($androidBookViews)
+    {
+        $query = "INSERT INTO android_book_views_table (
+            book_id, 
+            android_guest_id,
+            android_book_views_date_time_reading
+        ) VALUES (
+            '" . $androidBookViews['book_id'] . "',
+            '" . $androidBookViews['android_guest_id'] . "',
+            '" . $androidBookViews['android_book_views_date_time_reading'] . "'
+        )";
+        if ($this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "message" => "Successfully"
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+
+    public function getGuest()
+    {
+        if ($result = $this->conn->query("SELECT * FROM guest_table")) {
+            return json_encode([
+                "isSuccess" => true,
+                "data" => $result->fetch_all(MYSQLI_ASSOC)
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function postCustomQuery($query)
+    {
+        if ($result = $this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "data" => $result->fetch_all(MYSQLI_ASSOC)
             ]);
         } else {
             return json_encode([
