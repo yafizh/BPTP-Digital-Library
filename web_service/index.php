@@ -45,6 +45,13 @@ if (isset($_GET['request'])) {
         echo $apiService->getAllCategories();
     } else if ($_GET['request'] == 'getAllLanguages') {
         echo $apiService->getAllLanguages();
+    } else if ($_GET['request'] == 'getGuestByGuestFullNameDateProfessionCategoryId') {
+        echo $apiService->getGuestByGuestFullNameDateProfessionCategoryId(
+            $_POST['guest_full_name'],
+            $_POST['guest_come_date'],
+            $_POST['guest_profession'],
+            $_POST['book_category_id']
+        );
     } else if ($_GET['request'] == 'getBookByBookId') {
         echo $apiService->getBookByBookId($_POST['book_id']);
     } else if ($_GET['request'] == 'getBookByCategoryId') {

@@ -38,6 +38,27 @@ class Request
         }
     }
 
+    public function getGuestByGuestFullNameDateProfessionCategoryId($guest_full_name, $guest_come_date, $guest_profession, $book_category_id)
+    {
+        $query = "SELECT guest_full_name, DATE(guest_come_date_time) AS guest_come_date_time, guest_profession, book_category FROM guest_table_view WHERE 
+            guest_full_name LIKE '" . $guest_full_name . "%' AND
+            DATE(guest_come_date_time) LIKE '" . $guest_come_date . "%' AND
+            guest_profession LIKE '" . $guest_profession . "%' AND 
+            book_category_id LIKE '" . $book_category_id . "%'
+        ";
+        if ($result = $this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "data" => $result->fetch_all(MYSQLI_ASSOC)
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
     public function getAllBooks()
     {
         $result = $this->conn->query("SELECT * FROM book_view");
@@ -269,7 +290,7 @@ class Request
 
     public function getBookByTitleAuthorISBNPublisherInCategory($keyword, $categoryId)
     {
-        $query = "SELECT * FROM book_table WHERE 
+        $query = "SELECT * FROM book_view WHERE 
                 (
                 book_title LIKE '%" . $keyword . "%' 
                 OR 

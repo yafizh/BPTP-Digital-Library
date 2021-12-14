@@ -36,13 +36,13 @@
                         <th scope="col" class="text-center" style="vertical-align: middle;">
                             <i class="fas fa-search"></i>
                         <td scope="col">
-                            <input type="text" class="form-control">
+                            <input id="guest_full_name" type="text" class="form-control" autofocus>
                         </td>
                         <td scope="col">
-                            <input type="date" class="form-control">
+                            <input id="guest_come_date" type="date" class="form-control">
                         </td>
                         <td scope="col">
-                            <select class="form-select" id="guest_profession" name="guest_profession" required>
+                            <select class="form-select" id="guest_profession" required>
                                 <option value="" selected>Pilih Pekerjaan/Profesi</option>
                                 <option value="GENERAL">Umum</option>
                                 <option value="STUDENT">Mahasiswa</option>
@@ -50,14 +50,14 @@
                             </select>
                         </td>
                         <td scope="col">
-                            <select id="book-category-id" class="form-select" name="book-category-id">
+                            <select id="book-category-id" class="form-select">
                                 <option value="" selected>Semua</option>
                                 <option value="1">Umum</option>
                                 <option value="2">Filsafat</option>
-                                <option value="3 PENGETAHUAN MASYARAKAT">Ilmu Pengetahuan Masyarakat</option>
+                                <option value="3">Ilmu Pengetahuan Masyarakat</option>
                                 <option value="4">Bahasa</option>
                                 <option value="5">Matematika</option>
-                                <option value="6 PENGETAHUAN TERAPAN">Ilmu Pengetahuan Terapan</option>
+                                <option value="6">Ilmu Pengetahuan Terapan</option>
                                 <option value="7">Kesenian</option>
                                 <option value="8">Literatur</option>
                                 <option value="10">Sejarah, Biografi</option>
@@ -65,8 +65,12 @@
                         </td>
                     </tr>
                 </thead>
-                <tbody style="height:400px;">
-                </tbody>
+                <style>
+                    tbody tr:hover {
+                        background-color: white;
+                    }
+                </style>
+                <tbody></tbody>
             </table>
             <nav aria-label="..." class="mt-5">
                 <ul class="pagination justify-content-center"></ul>
@@ -74,6 +78,97 @@
         </main>
     </div>
     <script>
+        $("#guest_full_name").on('input', function() {
+                searchGuest(1)
+        });
+
+        $("#guest_come_date").on('change', function() {
+                searchGuest(1)
+        });
+
+        $("#guest_profession").on('change', function() {
+                searchGuest(1)
+        });
+
+        $("#book-category-id").on('change', function() {
+                searchGuest(1)
+        });
+
+        const searchGuest = page => {
+            $.ajax({
+                url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/?request=getGuestByGuestFullNameDateProfessionCategoryId`,
+                type: 'POST',
+                data: {
+                    "guest_full_name": $("#guest_full_name").val(),
+                    "guest_come_date": $("#guest_come_date").val(),
+                    "guest_profession": `{"guest-profession":"${$("#guest_profession").val()}`,
+                    "book_category_id": $("#book-category-id").val()
+                },
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response)
+                    if (response.isSuccess) {
+                        const batas = 10;
+                        let halaman = page;
+                        let halaman_awal = (halaman > 1) ? (halaman * batas) - batas : 0;
+
+                        let previous = halaman - 1;
+                        let next = halaman + 1;
+
+
+                        let data = response.data;
+                        let jumlah_data = data.length;
+                        let total_halaman = Math.ceil(jumlah_data / batas);
+
+                        let data_pegawai = data.splice(halaman_awal, batas);
+                        let nomor = halaman_awal + 1;
+
+
+
+                        $('.pagination').html('');
+                        $(".pagination").append(`
+                        <li class="page-item ${(halaman <= 1) ? 'disabled':''}">
+                            <a class="page-link ${(halaman <= 1) ? '':'text-success'}" onclick="getData(${parseInt(page)-1})" href="#" tabindex="-1" ${(halaman <= 1) ? 'aria-disabled="true"':''}>Sebelumnya</a>
+                        </li>
+                    `);
+
+                        for (let x = 1; x <= total_halaman; x++) {
+                            if (x == halaman) {
+                                $(".pagination").append(`
+                                <li class="page-item" aria-current="page">
+                                    <label class="page-link text-success" style="background-color:#C0C0C0;border:1px solid #C0C0C0;">${x}</label>
+                                </li>
+                            `);
+                            } else {
+                                $(".pagination").append(`
+                                <li class="page-item"><a class="page-link text-success" onclick="getData(${parseInt(x)})" href="#">${x}</a></li>
+                            `);
+                            }
+                        }
+                        $(".pagination").append(`
+                        <li class="page-item ${(halaman < total_halaman) ? '':'disabled'}">
+                            <a class="page-link ${(halaman < total_halaman) ? 'text-success':''}" onclick="getData(${parseInt(page)+1})" href="#" ${(halaman < total_halaman) ? '':'aria-disabled="true"'}>Selanjutnya</a>
+                        </li>
+                    `);
+
+                        $('tbody').html('');
+                        $.each(data_pegawai, function(index, value) {
+                            $('tbody').append(`
+                        <tr>
+                            <th scope="row" class="text-center">${nomor}</th>
+                            <td><label class="ms-1">${value.guest_full_name}</label></td>
+                            <td><label class="ms-1">${dateToIndonesiaDateFormat(value.guest_come_date_time)}</label></td>
+                            <td><label class="ms-1">${capitalizeTheFirstLetterOfEachWord(engToInd(JSON.parse(value.guest_profession)['guest-profession']))}</label></td>
+                            <td><label class="ms-1">${capitalizeTheFirstLetterOfEachWord(value.book_category)}</label></td>
+                        </tr>
+                        `);
+                            nomor++;
+                        });
+                    }
+                },
+            });
+        }
+
         const capitalizeTheFirstLetterOfEachWord = (words) => {
             var separateWord = words.toLowerCase().split(' ');
             for (var i = 0; i < separateWord.length; i++) {
@@ -120,7 +215,20 @@
             return result;
         }
 
+        const engToInd = word => {
+            let new_word = "";
+            if (word === "STUDENT") {
+                new_word = "MAHASISWA";
+            } else if (word === "BPTP_EMPLOYEE") {
+                new_word = "PEGAWAI BPTP"
+            } else if (word == "GENERAL") {
+                new_word = "UMUM";
+            }
+            return new_word;
+        }
+
         const getData = page => {
+            // if()
             $.ajax({
                 url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}web_service/?request=postCustomQuery`,
                 type: 'POST',
@@ -189,12 +297,12 @@
                             <th scope="row" class="text-center">${nomor}</th>
                             <td><label class="ms-1">${value.guest_full_name}</label></td>
                             <td><label class="ms-1">${dateToIndonesiaDateFormat(value.guest_come_date_time)}</label></td>
-                            <td><label class="ms-1">${capitalizeTheFirstLetterOfEachWord(JSON.parse(value.guest_profession)['guest-profession'])}</label></td>
+                            <td><label class="ms-1">${capitalizeTheFirstLetterOfEachWord(engToInd(JSON.parse(value.guest_profession)['guest-profession']))}</label></td>
                             <td><label class="ms-1">${capitalizeTheFirstLetterOfEachWord(value.book_category)}</label></td>
-                        </tr>                        
-                        `)
+                        </tr>
+                        `);
                             nomor++;
-                        })
+                        });
                     }
                 },
             });
