@@ -36,7 +36,7 @@
                 </div>
                 <div class="divider col-1"></div>
                 <div class="col">
-                    <h4 class="fw-normal text-center">KARYA TERBITAN BPTP</h4>
+                    <h4 class="fw-normal text-center">KARYA TERBITAN KEMENTRIAN PERTANIAN</h4>
                     <hr>
                     <div id="karya-bptp"></div>
                 </div>

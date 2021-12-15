@@ -115,6 +115,7 @@
                             }
                         });
                     } else {
+                        console.log(data.message);
                         Swal.fire({
                             title: 'Gagal Menambahkan Data',
                             icon: 'error',

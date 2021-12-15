@@ -74,15 +74,15 @@
                                 }
                             });
                             data_karyawan.push({
-                                "label": DAY_IN_INDONESIA[value[0].day-1],
+                                "label": value[0].guest_come_date,
                                 "y": parseInt(karyawan)
                             });
                             data_umum.push({
-                                "label": DAY_IN_INDONESIA[value[0].day-1],
+                                "label": value[0].guest_come_date,
                                 "y": parseInt(umum)
                             });
                             data_mahasiswa.push({
-                                "label": DAY_IN_INDONESIA[value[0].day-1],
+                                "label": value[0].guest_come_date,
                                 "y": parseInt(siswa)
                             });
                         });
@@ -99,7 +99,7 @@
             // exportEnabled: true,
             animationEnabled: true,
             title: {
-                text: "Kunjungan 1 Minggu Terakhir di Perpustakaan BPTP KALSEL"
+                text: "Kunjungan 1 Bulan Terakhir di Perpustakaan BPTP KALSEL"
             },
             subtitles: [{
                 text: ""

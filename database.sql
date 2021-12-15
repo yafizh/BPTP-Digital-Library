@@ -190,7 +190,36 @@
         (6,1,'Life Will Never be The Same','Tidak Ada Kehidupan Tanpa Perubahan', '555', 'ISBN', 'PT Gramedia', 'Martapura', '2000-05-10', 'Sindhunata', 1, 10, 5, 100, 2, 'life-will.jpg', null, 'Life Will Never Be The Same yang ditulis David Setiawan mengajak kita untuk memahami bahwa tidak ada kehidupan tanpa perubahan. Orang-orang yang berhenti belajar akan menjadi pemilik masa lalu. Orang-orang yang masih terus belajar, akan menjadi pemilik masa depan. Perubahan menjanjikan kesempatan dan kekuatan baru. Tinggalkanlah kesenangan yang menghalangi pencapaian kecermelangan hidup yang didambakan. Dan berhati-hatilah karena beberapa kesenangan adalah cara gembira dan termudah menuju kegagalan.'),
         (6,1,'Filosofi Teras','', '555', 'ISBN', 'PT Gramedia', 'Martapura', '2000-05-10', 'Sindhunata', 1, 10, 5, 100, 2, 'filosofi-teras.jpg', null, 'Lebih dari 2.000 tahun lalu, sebuah mazhab filsafat menemukan akar masalah dan juga solusi dari banyak emosi negatif. Stoisisme, atau Filosofi Teras, adalah filsafat Yunani-Romawi kuno yang bisa membantu kita mengatasi emosi negatif dan menghasilkan mental yang tangguh dalam menghadapi naik-turunnya kehidupan.'),
         (6,1,'Master Your Time, Master Your Life','', '555', 'ISBN', 'PT Gramedia', 'Martapura', '2000-05-10', 'Sindhunata', 1, 10, 5, 100, 2, 'master.jpg', null, '“Time is money,” as the saying goes, but most of us never feel we have enough of either. In Master Your Time, Master Your Life, internationally acclaimed productivity expert and bestselling author Brian Tracy presents a brilliant new approach to time management that will help you gain control of your time and accomplish far more, faster and more easily than you ever thought possible.'),
+        (1,1,'Tinjauan Kinerja','', '555', 'ISBN', 'PT Gramedia', 'Martapura', '2000-05-10', 'Sholih Nugroho Hadi, S.ST', 1, 10, 5, 100, 2, 'cover-bk56.jpg', "bk56_kalsel.pdf", 'Dewasa ini sudah dikembangkan system integrasi sapi dan kelapa sawit (SISKA). Berbagai kajian menunjukkan bahwa pelaksanaan SISKA mampu memberikan peningkatan produksi baik bagi perkebunan kelapa sawit maupun peningkatan produksi ternak sapi.'),
+        (1,1,'Prosiding','', '555', '9789793112541', 'PT Gramedia', 'Martapura', '2000-05-10', 'Muhammad Yasin', 1, 10, 5, 100, 2, 'cover-bk57.jpg', "bk57_kalsel.pdf", 'Sejauh ini, belum ada evaluasi kinerja dari pola integrasi sawit-sapi. Tulisan ini bertujuan untuk melihat kinerja pengelolaan sapi potong pada program integrasi sapi potong sawit.'),
+        (3,1,'Budidaya Tanaman Padi dan Hortikultura','', '555', '9789793112572', 'PT Gramedia', 'Martapura', '2000-05-10', 'Aidi Noor', 1, 10, 5, 100, 2, 'cover-bk58.jpg', "bk58_kalsel.pdf", 'lama dilaksanakan oleh petani peternak yang memiliki perkebunan kelapa sawit di Indonesia. Secara nasional perkembangan jumlah kelompok yang terlibat dalam program integrasi tanaman ternak terus mengalami pertumbuhan.'),
+        (3,1,'Pengolahan Hasil Pertanian dan Limbahnya','', '555', '9789793112565', 'PT Gramedia', 'Martapura', '2000-05-10', 'Susi Lesmani', 1, 10, 5, 100, 2, 'cover-bk59.jpg', "bk59_kalsel.pdf", 'Kinerja program integrasi tanaman ternak menunjukkan keberhasilan yang bervariasi. Pakan ternak sapi potong yang berasal dari limbah sawit terutama dalam bentuk hasil fermentasi bungkil sawit dilengkapi dengan pelepah kelapa sawit merupakan sumber.'),
+        (1,1,'Pengelolaan Tanaman Terpadu Kedelai','', '555', '9789793112282', 'PT Gramedia', 'Martapura', '2000-05-10', 'Susi', 1, 10, 5, 100, 2, 'cover-bk60.jpg', "bk60.pdf", 'serat pakan yang baik untuk menambah kenaikan bobot ternak sapi hidup. Solid atau lumpur sawit limbah dari industri kelapa sawit masih mengandung CPO sebesar 1,50%,'),
         (6,1,'Underground A Novel','', '555', '9786020319469', 'PT Gramedia', 'Martapura', '2000-05-10', 'Ika Natassa', 1, 10, 5, 100, 2, 'undergroud.jpg', null, 'Selamat datang di Underground, stasiun televisi musik terbesar di Amerika Serikat, tempat para entertainer muda dan VJ, icon kehidupan metropolis, menjalani hari-hari normal mereka, itu jika anda bisa bilang bahwa hidup 10 jam sehari dalam sorotan lampu studio, terbang bolak balik dengan Marquis Jet meliput AmsterJam dan Live 8, dan berpose untuk cover Rolling Stone biasa-biasa saja.');
+
+    INSERT INTO 
+        book_new_publish_table (
+            book_id,
+            book_new_publish_timestamp
+        )
+    VALUES 
+        (19, CURRENT_TIMESTAMP()),
+        (20, CURRENT_TIMESTAMP()),
+        (21, CURRENT_TIMESTAMP()),
+        (22, CURRENT_TIMESTAMP()),
+        (23, CURRENT_TIMESTAMP());
+
+    INSERT INTO 
+        book_new_collection_table (
+            book_id,
+            book_new_collection_timestamp
+        )
+    VALUES
+        (10, CURRENT_TIMESTAMP()),
+        (11, CURRENT_TIMESTAMP()),
+        (12, CURRENT_TIMESTAMP()),
+        (13, CURRENT_TIMESTAMP()),
+        (14, CURRENT_TIMESTAMP());
 
     INSERT INTO 
         guest_table (
@@ -205,13 +234,55 @@
         (2, "Nurcholis", CURRENT_TIMESTAMP(), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
         (3, "Diki Suti Prasetya", CURRENT_TIMESTAMP(), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
         (4, "Rania Nor Aida", CURRENT_TIMESTAMP(), "Mengunjungi mahasiswa magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
-        (5, "Harun", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 1 DAY), "Mengunjungi mahasiswa magang", '{"guest-profession":"BPTP_EMPLOYEE","guest-division":"Peneliti"}'),
-        (3, "Odiah Permata Sari", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 2 DAY), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (2, "Tiara Mayasari", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 2 DAY), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (3, "Ahmad Fahrudin", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 2 DAY), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (3, "Ahmad Ibrahim", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 2 DAY), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (3, "Agus Setiawan", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 3 DAY), "Kunjungan", '{"guest-profession":"GENERAL"}'),
-        (3, "Yogi", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 3 DAY), "Kunjungan", '{"guest-profession":"GENERAL"}'),
-        (3, "Aulia Rahman", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 4 DAY), "Kunjungan", '{"guest-profession":"GENERAL"}'),
-        (3, "Eko", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 4 DAY), "Kerja", '{"guest-profession":"BPTP_EMPLOYEE"}'),
-        (3, "Tya", DATE_ADD(CURRENT_TIMESTAMP(), INTERVAL 5 DAY), "Kerja", '{"guest-profession":"BPTP_EMPLOYEE"}')
+        (5, "Harun", CURRENT_TIMESTAMP() - INTERVAL 1 DAY, "Mengunjungi mahasiswa magang", '{"guest-profession":"BPTP_EMPLOYEE","guest-division":"Peneliti"}'),
+        (3, "Odiah Permata Sari", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
+        (2, "Tiara Mayasari", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
+        (3, "Ahmad Fahrudin", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
+        (3, "Ahmad Ibrahim", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
+        (3, "Agus Setiawan", CURRENT_TIMESTAMP() - INTERVAL 3 DAY, "Kunjungan", '{"guest-profession":"GENERAL"}'),
+        (3, "Yogi", CURRENT_TIMESTAMP() - INTERVAL 3 DAY, "Kunjungan", '{"guest-profession":"GENERAL"}'),
+        (3, "Aulia Rahman", CURRENT_TIMESTAMP() - INTERVAL 4 DAY, "Kunjungan", '{"guest-profession":"GENERAL"}'),
+        (3, "Eko", CURRENT_TIMESTAMP() - INTERVAL 4 DAY, "Kerja", '{"guest-profession":"BPTP_EMPLOYEE"}'),
+        (3, "Tya", CURRENT_TIMESTAMP() - INTERVAL 5 DAY, "Kerja", '{"guest-profession":"BPTP_EMPLOYEE"}');
+
+    INSERT INTO 
+        website_guest_table (
+            website_guest_ip_public,
+            website_guest_date_time_enter
+        )
+    VALUES 
+        ('192.168.1.1', CURRENT_TIMESTAMP()),
+        ('192.168.1.2', CURRENT_TIMESTAMP()),
+        ('192.168.1.3', CURRENT_TIMESTAMP()),
+        ('192.168.1.4', CURRENT_TIMESTAMP()),
+        ('192.168.1.5', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
+        ('192.168.1.6', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.7', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.8', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.9', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.10', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
+        ('192.168.1.11', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
+        ('192.168.1.12', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
+        ('192.168.1.13', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
+        ('192.168.1.14', CURRENT_TIMESTAMP() - INTERVAL 5 DAY);
+
+    INSERT INTO 
+        android_guest_table (
+            android_guest_ip_public,
+            android_guest_date_time_enter
+        )
+    VALUES 
+        ('192.168.1.1', CURRENT_TIMESTAMP()),
+        ('192.168.1.2', CURRENT_TIMESTAMP()),
+        ('192.168.1.3', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
+        ('192.168.1.4', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
+        ('192.168.1.5', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
+        ('192.168.1.6', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.7', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.8', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
+        ('192.168.1.9', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
+        ('192.168.1.10', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
+        ('192.168.1.11', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
+        ('192.168.1.12', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
+        ('192.168.1.13', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
+        ('192.168.1.14', CURRENT_TIMESTAMP() - INTERVAL 6 DAY);

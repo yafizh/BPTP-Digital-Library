@@ -76,9 +76,9 @@
                         <p class="card-text"></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>300</strong> Buku Online</li>
-                        <li class="list-group-item"><strong>3000</strong> Koleksi Perpustakaan</li>
-                        <li class="list-group-item"><strong>3000</strong> Koleksi Perpustakaan</li>
+                        <li class="list-group-item"><strong>300</strong> Koleksi</li>
+                        <li class="list-group-item"><strong>3000</strong> 100 Koleksi Karya Umum</li>
+                        <li class="list-group-item"><strong>3000</strong> 200 Koleksi Kementerian Pertanian</li>
                     </ul>
                     <div class="card-body">
                         <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/detail_page.php" class="card-link link-light btn bg-primary">Detail Data</a>
@@ -97,8 +97,8 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Minggu ini</li>
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Bulan ini</li>
+                        <li class="list-group-item"><strong>30</strong> Pengunjung Minggu ini</li>
+                        <li class="list-group-item"><strong>90</strong> Pengunjung Bulan ini</li>
                     </ul>
                     <div class="card-body">
                         <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/detail_page2.php" class="card-link link-light btn bg-primary">Detail Data</a>
@@ -113,12 +113,12 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung Website</h5>
+                        <h5 class="card-title">Laporan Pengunjung Online</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Minggu ini</li>
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Bulan ini</li>
+                    <li class="list-group-item"><strong>100</strong> Pengunjung Hari ini</li>
+                        <li class="list-group-item"><strong>230</strong> Pengunjung Minggu ini</li>
+                        <li class="list-group-item"><strong>700</strong> Pengunjung Bulan ini</li>
                     </ul>
                     <div class="card-body">
                         <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>information_system/app/admin_page/detail_page3.php" class="card-link link-light btn bg-primary">Detail Data</a>
@@ -136,9 +136,9 @@
                         <h5 class="card-title">Laporan Pengunjung Android</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Minggu ini</li>
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Bulan ini</li>
+                    <li class="list-group-item"><strong>94</strong> Pengunjung Hari ini</li>
+                        <li class="list-group-item"><strong>144</strong> Pengunjung Minggu ini</li>
+                        <li class="list-group-item"><strong>230</strong> Pengunjung Bulan ini</li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
@@ -156,8 +156,8 @@
                         <h5 class="card-title">Laporan Buku dibaca</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>10</strong> Dibaca di BPTP</li>
-                        <li class="list-group-item"><strong>500</strong> Dibaca di Website</li>
+                        <li class="list-group-item"><strong>100</strong> Dibaca di BPTP</li>
+                        <li class="list-group-item"><strong>700</strong> Dibaca di Website</li>
                         <li class="list-group-item"><strong>500</strong> Dibaca di Android</li>
                     </ul>
                     <div class="card-body">

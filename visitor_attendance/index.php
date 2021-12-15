@@ -13,6 +13,9 @@
                 <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>visitor_attendance/guest_report.php" style="flex: 1;" class="d-flex align-items-center justify-content-center btn btn-lg btn-secondary fw-bold border-success text-success bg-white">Riwayat Kunjungan</a>
                 <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>visitor_attendance/guest_form.php" style="flex: 1;" class="d-flex align-items-center justify-content-center btn btn-lg btn-secondary fw-bold border-success text-success bg-white">Buku Tamu</a>
             </div>
+            <div class="d-flex gap-3 mt-3 justify-content-center">
+                <h4>Pilih Buku Tamu untuk berkunjung ke perpustakaan</h4>
+            </div>
         </div>
     </main>
 </body>

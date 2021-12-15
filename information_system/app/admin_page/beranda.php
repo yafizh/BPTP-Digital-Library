@@ -140,7 +140,7 @@
                                 visitor_per_date[value.guest_come_date] = [value];
                             }
                         });
-
+                        
                         $.each(visitor_per_date, function(index, value) {
                             const d = new Date(index);
                             let day = d.getDay()
@@ -157,7 +157,7 @@
                                     karyawan++;
                                 }
                             });
-                            guest_diagram_data.push([DAY_IN_INDONESIA[day], umum, siswa, karyawan]);
+                            guest_diagram_data.push([index, umum, siswa, karyawan]);
                         });
                     } else {
                         guest_diagram_data.push(["Senin", 0,0,0]);
@@ -268,7 +268,7 @@
             success: function(response) {
                 if (response.isSuccess) {
                     if (response.data.length) {
-                        pie_chart.push(['Website', parseInt(response.data[0].website_guest)])
+                        pie_chart.push(['Online', parseInt(response.data[0].website_guest)])
                     } else {
                         console.log('Data Kosong')
                     }
@@ -289,7 +289,7 @@
             success: function(response) {
                 if (response.isSuccess) {
                     if (response.data.length) {
-                        pie_chart.push(['Kantor BPTP', parseInt(response.data[0].guest_visitor)])
+                        pie_chart.push(['Offline', parseInt(response.data[0].guest_visitor)])
                     } else {
                         console.log('Data Kosong')
                     }
@@ -330,7 +330,7 @@
             var data = google.visualization.arrayToDataTable(guest_diagram_data);
 
             var options = {
-                title: 'Kunjungan Website BPTP 1 Minggu Terakhir',
+                title: 'Kunjungan Perpustakaan BPTP KALSEL Versi Offline 1 Bulan Terakhir',
                 curveType: 'function',
                 legend: {
                     position: 'bottom'
@@ -349,7 +349,7 @@
             var data = google.visualization.arrayToDataTable(website_guest_diagram_data);
 
             var options = {
-                title: 'Kunjungan Website BPTP 1 Minggu Terakhir',
+                title: 'Kunjungan Perpustakaan Digital BPTP KALSEL Versi Online 1 Bulan Terakhir',
                 curveType: 'function',
                 legend: {
                     position: 'bottom'
@@ -368,7 +368,7 @@
             var data = google.visualization.arrayToDataTable(android_guest_diagram_data);
 
             var options = {
-                title: 'Kunjungan Mobile App BPTP 1 Minggu Terakhir',
+                title: 'Kunjungan Perpustakaan Digital BPTP KALSEL Versi Android 1 Bulan Terakhir',
                 curveType: 'function',
                 legend: {
                     position: 'bottom'
@@ -389,7 +389,7 @@
             var data = google.visualization.arrayToDataTable(pie_chart);
 
             var options = {
-                title: 'Pengunjung Perpustakaan Bulan Ini',
+                title: 'Persentase Pengunjung Perpustakaan BPTP KALSEL Secara Keseluruhan',
                 titleTextStyle: {
                     fontSize: 16
                 }

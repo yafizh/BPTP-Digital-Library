@@ -96,7 +96,7 @@ if (isset($_GET['request'])) {
                 'book-title' => $_POST['book-title'],
                 'book-sub-title' => $_POST['book-sub-title'],
                 'book-classification-number' => $_POST['book-classification-number'],
-                'book-isbn-postWebsiteBookViewspostWebsiteBookViews' => $_POST['book-isbn-postWebsiteBookViewspostWebsiteBookViews'],
+                'book-isbn' => $_POST['book-isbn'],
                 'book-publisher' => $_POST['book-publisher'],
                 'book-publish-place' => $_POST['book-publish-place'],
                 'book-publish-date' => $_POST['book-publish-date'],
