@@ -1,0 +1,30 @@
+/* Book Card */
+.book-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* Book Overplay */
+.img-overplay {
+    position: absolute;
+    z-index: 1;
+    background: rgba(0, 0, 0, .8);
+    display: none;
+}
+
+.collection {
+    cursor: pointer;
+}
+
+.collection:hover>.img-overplay {
+    display: inline;
+}
+
+/* Banner */
+#img-banner {
+    max-width: 80px;
+    object-fit: contain;
+}

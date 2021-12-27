@@ -1,5 +1,5 @@
     CREATE DATABASE `db_sistem_informasi_perpustakaan`;
-    USE DATABASE `db_sistem_informasi_perpustakaan`;
+    USE `db_sistem_informasi_perpustakaan`;
     CREATE TABLE `user_table` (
         user_id INT PRIMARY KEY AUTO_INCREMENT,
         user_username VARCHAR(255),
