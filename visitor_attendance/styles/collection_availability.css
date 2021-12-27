@@ -1,9 +1,0 @@
-#collection-container .card img {
-    object-fit: cover;
-    height: 270px;
-}
-#collection-container .card li {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}

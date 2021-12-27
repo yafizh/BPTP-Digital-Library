@@ -1,24 +1,26 @@
-    CREATE TABLE user_table (
+    CREATE DATABASE `db_sistem_informasi_perpustakaan`;
+    USE DATABASE `db_sistem_informasi_perpustakaan`;
+    CREATE TABLE `user_table` (
         user_id INT PRIMARY KEY AUTO_INCREMENT,
         user_username VARCHAR(255),
         user_password VARCHAR(255)
     );
 
-    INSERT INTO user_table VALUES (null, 'admin', 'admin');
+    INSERT INTO `user_table` VALUES (null, 'admin', 'admin');
 
-    CREATE TABLE book_category_table (
+    CREATE TABLE `book_category_table` (
         book_category_id INT NOT NULL AUTO_INCREMENT,
         book_category VARCHAR(255),
         PRIMARY KEY (book_category_id)
     );
 
-    CREATE TABLE book_language_table (
+    CREATE TABLE `book_language_table` (
         book_language_id INT NOT NULL AUTO_INCREMENT,
         book_language VARCHAR(255),
         PRIMARY KEY (book_language_id)
     );
 
-    CREATE TABLE book_table (
+    CREATE TABLE `book_table` (
         book_id INT NOT NULL AUTO_INCREMENT,
         book_category_id INT NOT NULL,
         book_language_id INT NOT NULL,
@@ -43,22 +45,7 @@
         FOREIGN KEY (book_language_id) REFERENCES book_language_table (book_language_id) ON DELETE CASCADE
     );
 
-    CREATE TABLE guest_table (
-        guest_id INT NOT NULL AUTO_INCREMENT,
-        book_category_id INT NOT NULL,
-        guest_full_name VARCHAR(255) NOT NULL,
-        guest_come_date_time DATETIME NOT NULL,
-        guest_come_reason TEXT NULL,
-        guest_profession TEXT NOT NULL,
-        PRIMARY KEY (guest_id),
-        FOREIGN KEY (book_category_id) REFERENCES book_category_table (book_category_id)
-    );
-
-    CREATE VIEW guest_table_view AS 
-    SELECT guest_table.*, book_category_table.book_category FROM `guest_table` 
-    INNER JOIN `book_category_table` ON guest_table.book_category_id = book_category_table.book_category_id;
-
-    CREATE TABLE book_new_collection_table (
+    CREATE TABLE `book_new_collection_table` (
         book_new_collection_id INT NOT NULL AUTO_INCREMENT,
         book_id INT NOT NULL,
         book_new_collection_timestamp DATETIME NOT NULL,
@@ -66,7 +53,7 @@
         FOREIGN KEY (book_id) REFERENCES book_table (book_id)
     );
 
-    CREATE TABLE book_new_publish_table (
+    CREATE TABLE `book_new_publish_table` (
         book_new_publish_id INT NOT NULL AUTO_INCREMENT,
         book_id INT NOT NULL,
         book_new_publish_timestamp DATETIME NOT NULL,
@@ -74,14 +61,14 @@
         FOREIGN KEY (book_id) REFERENCES book_table (book_id)
     );
 
-    CREATE TABLE website_guest_table (
+    CREATE TABLE `website_guest_table` (
         website_guest_id INT NOT NULL AUTO_INCREMENT,
         website_guest_ip_public VARCHAR(255), -- Tipe Data Masih Belum Tepat
         website_guest_date_time_enter DATETIME NOT NULL,
         PRIMARY KEY (website_guest_id)
     );
 
-    CREATE TABLE website_book_views_table (
+    CREATE TABLE `website_book_views_table` (
         website_book_views_id INT NOT NULL AUTO_INCREMENT,
         book_id INT NOT NULL,
         website_guest_id INT NOT NULL,
@@ -91,24 +78,7 @@
         FOREIGN KEY (website_guest_id) REFERENCES website_guest_table (website_guest_id)
     );
 
-    CREATE TABLE android_guest_table (
-        android_guest_id INT NOT NULL AUTO_INCREMENT,
-        android_guest_ip_public VARCHAR(255), -- Tipe Data Masih Belum Tepat
-        android_guest_date_time_enter DATETIME,
-        PRIMARY KEY (android_guest_id)
-    );
-
-    CREATE TABLE android_book_views_table (
-        android_book_views_id INT NOT NULL AUTO_INCREMENT,
-        book_id INT NOT NULL,
-        android_guest_id INT NOT NULL,
-        android_book_views_date_time_reading DATETIME NOT NULL,
-        PRIMARY KEY (android_book_views_id),
-        FOREIGN KEY (book_id) REFERENCES book_table (book_id),
-        FOREIGN KEY (android_guest_id) REFERENCES android_guest_table (android_guest_id)
-    );
-
-    CREATE VIEW book_view AS 
+    CREATE VIEW `book_view` AS 
     SELECT 
         book_table.*, 
         book_category_table.book_category, 
@@ -120,12 +90,12 @@
     LEFT JOIN `book_new_collection_table` ON book_table.book_id = book_new_collection_table.book_id 
     LEFT JOIN `book_new_publish_table` ON book_table.book_id = book_new_publish_table.book_id;
 
-    CREATE VIEW new_book_collection_view AS 
+    CREATE VIEW `new_book_collection_view` AS 
     SELECT book_table.*, book_language_table.book_language FROM `book_new_collection_table` 
     INNER JOIN `book_table` ON book_table.book_id = book_new_collection_table.book_id 
     INNER JOIN `book_language_table` ON book_table.book_language_id = book_language_table.book_language_id;
 
-    CREATE VIEW book_new_publish_view AS 
+    CREATE VIEW `book_new_publish_view` AS 
     SELECT book_table.*, book_language_table.book_language FROM `book_new_publish_table` 
     INNER JOIN `book_table` ON book_table.book_id = book_new_publish_table.book_id 
     INNER JOIN `book_language_table` ON book_table.book_language_id = book_language_table.book_language_id;
@@ -222,30 +192,6 @@
         (14, CURRENT_TIMESTAMP());
 
     INSERT INTO 
-        guest_table (
-            book_category_id,
-            guest_full_name,
-            guest_come_date_time,
-            guest_come_reason,
-            guest_profession
-        )
-    VALUES 
-        (1, "Nursahid Arya Suyudi", CURRENT_TIMESTAMP(), "Mengunjungi mahasiswa magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
-        (2, "Nurcholis", CURRENT_TIMESTAMP(), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
-        (3, "Diki Suti Prasetya", CURRENT_TIMESTAMP(), "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
-        (4, "Rania Nor Aida", CURRENT_TIMESTAMP(), "Mengunjungi mahasiswa magang", '{"guest-profession":"STUDENT","guest-university":"Universital Islam Kalimantan","guest-study-program":"Teknologi Informasi"}'),
-        (5, "Harun", CURRENT_TIMESTAMP() - INTERVAL 1 DAY, "Mengunjungi mahasiswa magang", '{"guest-profession":"BPTP_EMPLOYEE","guest-division":"Peneliti"}'),
-        (3, "Odiah Permata Sari", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (2, "Tiara Mayasari", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (3, "Ahmad Fahrudin", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (3, "Ahmad Ibrahim", CURRENT_TIMESTAMP() - INTERVAL 2 DAY, "Magang", '{"guest-profession":"STUDENT","guest-university":"Universital Lambung Mangkurat","guest-study-program":"Agronomi"}'),
-        (3, "Agus Setiawan", CURRENT_TIMESTAMP() - INTERVAL 3 DAY, "Kunjungan", '{"guest-profession":"GENERAL"}'),
-        (3, "Yogi", CURRENT_TIMESTAMP() - INTERVAL 3 DAY, "Kunjungan", '{"guest-profession":"GENERAL"}'),
-        (3, "Aulia Rahman", CURRENT_TIMESTAMP() - INTERVAL 4 DAY, "Kunjungan", '{"guest-profession":"GENERAL"}'),
-        (3, "Eko", CURRENT_TIMESTAMP() - INTERVAL 4 DAY, "Kerja", '{"guest-profession":"BPTP_EMPLOYEE"}'),
-        (3, "Tya", CURRENT_TIMESTAMP() - INTERVAL 5 DAY, "Kerja", '{"guest-profession":"BPTP_EMPLOYEE"}');
-
-    INSERT INTO 
         website_guest_table (
             website_guest_ip_public,
             website_guest_date_time_enter
@@ -265,24 +211,3 @@
         ('192.168.1.12', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
         ('192.168.1.13', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
         ('192.168.1.14', CURRENT_TIMESTAMP() - INTERVAL 5 DAY);
-
-    INSERT INTO 
-        android_guest_table (
-            android_guest_ip_public,
-            android_guest_date_time_enter
-        )
-    VALUES 
-        ('192.168.1.1', CURRENT_TIMESTAMP()),
-        ('192.168.1.2', CURRENT_TIMESTAMP()),
-        ('192.168.1.3', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
-        ('192.168.1.4', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
-        ('192.168.1.5', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
-        ('192.168.1.6', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.7', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.8', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.9', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
-        ('192.168.1.10', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
-        ('192.168.1.11', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
-        ('192.168.1.12', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
-        ('192.168.1.13', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
-        ('192.168.1.14', CURRENT_TIMESTAMP() - INTERVAL 6 DAY);
