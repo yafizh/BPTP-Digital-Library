@@ -72,7 +72,7 @@
           <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off">
           <label for="password">Password</label>
         </div>
-        <a href="<?= (IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/home_page.php" class="link-dark">Masuk Sebagai Tamu</a>
+        <a href="<?= (IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/home_page.php" class="w-100 btn btn-success">Masuk Sebagai Tamu</a>
         <button id="btn-login" class="mt-2 w-100 btn btn-lg btn-success" type="submit">Masuk</button>
       </div>
       <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p> -->

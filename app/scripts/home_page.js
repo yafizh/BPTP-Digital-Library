@@ -328,7 +328,7 @@ const getAllBooks = _ => {
 getAllCategories()
 getAllBooks();
 if (sessionStorage.getItem(cacheKey)) {
-    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/beranda.php" class="text-dark text-decoration-none ms-5">Halaman Admin</a>`)
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/beranda.php" class="text-white text-decoration-none ms-5">Halaman Admin</a>`)
 } else {
-    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/login_page.php" class="text-dark text-decoration-none ms-5">Login</a>`)
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/login_page.php" class="text-white text-decoration-none ms-5">Login</a>`)
 }

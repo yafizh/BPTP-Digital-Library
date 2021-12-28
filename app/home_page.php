@@ -95,7 +95,7 @@
 </head>
 
 <body>
-    <div class="w-100 bg-white">
+    <div class="w-100 bg-success">
         <div class="container d-flex justify-content-end p-1" id="top-to-banner">
             <!-- <a href="#" class="link-dark text-decoration-none ms-5">Versi Mobile</a> -->
         </div>

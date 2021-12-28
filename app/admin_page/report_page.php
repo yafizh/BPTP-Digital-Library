@@ -93,7 +93,7 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung</h5>
+                        <h5 class="card-title">Laporan Buku Koleksi Terbaru Bulan ini</h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
@@ -113,7 +113,7 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung Online</h5>
+                        <h5 class="card-title">Laporan Buku Terbitan Kementan</h5>
                     </div>
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>100</strong> Pengunjung Hari ini</li>
@@ -133,7 +133,7 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Pengunjung Android</h5>
+                        <h5 class="card-title">Laporan Buku Per Kategori</h5>
                     </div>
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>94</strong> Pengunjung Hari ini</li>
@@ -153,7 +153,7 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Buku dibaca</h5>
+                        <h5 class="card-title">Laporan Admin</h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>100</strong> Dibaca di BPTP</li>
