@@ -78,7 +78,6 @@
     <script>
         let formData = new FormData();
         const book_cover_image = "book-cover-img";
-        const book_digital_file = "book-digital-file";
 
         const putToForm = _ => {
             for (let value of $('form#catalog-form').serializeArray().values()) {
@@ -97,9 +96,8 @@
         const save = _ => {
             putToForm();
             formData.set(book_cover_image, $(`#${book_cover_image}`).prop('files')[0]);
-            formData.set(book_digital_file, $(`#${book_digital_file}`).prop('files')[0]);
             $.ajax({
-                url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/?request=postBook`,
+                url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}app/database/?request=postBook`,
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
@@ -241,10 +239,6 @@
                 <div class="col-12">
                     <label for="${book_cover_image}" class="form-label">Unggah Cover</label>
                     <input type="file" accept=".png, .jpg, .jpeg" name="${book_cover_image}" class="form-control" id="${book_cover_image}">
-                </div>
-                <div class="col-12">
-                    <label for="${book_digital_file}" class="form-label">Unggah File Digital</label>
-                    <input type="file" name="${book_digital_file}" class="form-control" id="${book_digital_file}" accept=".pdf">
                 </div>
                 <div class="col-12 d-flex">
                     <div class="d-flex flex-grow-1 justify-content-start">

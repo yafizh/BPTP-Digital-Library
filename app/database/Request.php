@@ -108,7 +108,6 @@ class Request
             book_page,
             book_stock,
             book_cover_uri,
-            book_file_uri,
             book_description
         ) VALUES (
             '" . $book['book-category-id'] . "',
@@ -127,7 +126,6 @@ class Request
             '" . $book['book-page'] . "',
             '" . $book['book-stock'] . "',
             '" . $book['upload-cover-image'] . "',
-            '" . $book['upload-file'] . "',
             '" . $book['book-description'] . "'
         )";
 
