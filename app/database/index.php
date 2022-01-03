@@ -20,7 +20,7 @@ if (isset($_GET['request'])) {
             "website_book_views_date_time_reading" => $_POST['website_book_views_date_time_reading']
         ];
         echo $apiService->postWebsiteBookViews($websiteBookViews);
-    }  else if ($_GET['request'] == 'postAndroidGuest') {
+    } else if ($_GET['request'] == 'postAndroidGuest') {
         $guestAndroid = [
             "android_guest_ip_public" => $_POST['android_guest_ip_public'],
             "android_guest_date_time_enter" => $_POST['android_guest_date_time_enter']
@@ -33,7 +33,7 @@ if (isset($_GET['request'])) {
             "android_book_views_date_time_reading" => $_POST['android_book_views_date_time_reading']
         ];
         echo $apiService->postAndroidBookViews($androidBookViews);
-    }  else if ($_GET['request'] == 'putPassword') {
+    } else if ($_GET['request'] == 'putPassword') {
         echo $apiService->putPassword($_POST['user-id'], $_POST['new-password']);
     } else if ($_GET['request'] == 'getAllBooks') {
         echo $apiService->getAllBooks();
@@ -76,7 +76,7 @@ if (isset($_GET['request'])) {
             $cover_image_extension = explode(".", $_FILES["book-cover-img"]["name"]);
             $cover_image_extension = end($cover_image_extension);
             $upload_cover_image = date('YmdHis') . "." . $cover_image_extension;
-            if (move_uploaded_file($_FILES["book-cover-img"]["tmp_name"], 'uploads/cover/' . $upload_cover_image)) $image_uploaded = true;
+            if (move_uploaded_file($_FILES["book-cover-img"]["tmp_name"], '../../' . $cover_image_dir . $upload_cover_image)) $image_uploaded = true;
         } else $image_uploaded = true;
 
         if ($image_uploaded) {
