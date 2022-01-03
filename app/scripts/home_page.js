@@ -186,12 +186,6 @@ const showBook = callback => {
                                         <div style="width: 170px;">Lokasi</div>
                                         <div class="col">Rak ${value.book_classification_number}</div>
                                     </div>
-                                    <div class="d-flex">
-                                        <div style="width: 170px;">File Digital</div>
-                                        <div class="col">
-                                            ${value.book_file_uri == null ? "File digital tidak tersedia" : `<a href="#" onclick="reading_book('${value.book_id}','${value.book_file_uri}');">Klik disini</a>`}
-                                        </div>
-                                    </div>
                                 </div>
                             `);
                 $("#exampleModal").modal('show');
