@@ -319,10 +319,9 @@ const getAllBooks = _ => {
     });
 }
 
-getAllCategories()
+getAllCategories();
 getAllBooks();
-if (sessionStorage.getItem(cacheKey)) {
-    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/add_catalog_page.php" class="text-white text-decoration-none ms-5">Halaman Admin</a>`)
-} else {
-    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/login_page.php" class="text-white text-decoration-none ms-5">Login</a>`)
-}
+if (sessionStorage.getItem(cacheKey)) 
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/add_catalog_page.php" class="text-white text-decoration-none ms-5">Halaman Admin</a>`);
+ else 
+    $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/login_page.php" class="text-white text-decoration-none ms-5">Login</a>`);

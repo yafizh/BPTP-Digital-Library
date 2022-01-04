@@ -132,7 +132,7 @@
 
     <main class="container">
         <h2 class="mb-4" id="category-title">Semua Koleksi</h2>
-        <div class="row justify-content-center g-4" id="book-containerrr"></div>
+        <div class="row g-4" id="book-containerrr"></div>
     </main>
 
     <?php require_once 'utils/simple_modal.html' ?>
