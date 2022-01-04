@@ -99,7 +99,7 @@
             console.log(response)
             if (response.isSuccess) {
               sessionStorage.setItem(cacheKey, JSON.stringify(response.data));
-              location.replace(`${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}app/admin_page/beranda.php`);
+              location.replace(`${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}app/home_page.php`);
             } else {
               alert('Username atau Password salah')
             }
