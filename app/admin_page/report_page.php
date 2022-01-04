@@ -19,14 +19,6 @@
                         Halaman Utama
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/admin_page/beranda.php" class="nav-link link-dark" aria-current="page" id="beranda">
-                        <svg class="bi me-2" width="16" height="16">
-                            <use xlink:href="#speedometer2" />
-                        </svg>
-                        Dashboard
-                    </a>
-                </li>
                 <li>
                     <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/admin_page/add_catalog_page.php" class="nav-link link-dark" id="katalog">
                         <svg class="bi me-2" width="16" height="16">
