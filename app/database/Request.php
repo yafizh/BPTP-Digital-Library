@@ -189,8 +189,7 @@ class Request
             book_height = '" . $book['book-height'] . "',
             book_page = '" . $book['book-page'] . "',
             book_stock = '" . $book['book-stock'] . "',"
-            . (isset($book["book_cover_uri"]) ? "book_cover_uri = '" . $book["book_cover_uri"] . "'," : "")
-            . (isset($book["book_file_uri"]) ? "book_file_uri = '" . $book["book_file_uri"] . "'," : "")  .
+            . (isset($book["book_cover_uri"]) ? "book_cover_uri = '" . $book["book_cover_uri"] . "'," : "") .
             "book_description = '" . $book['book-description'] . "' 
             WHERE book_id = " . $book['book-id'];
         if ($this->conn->query($query)) {

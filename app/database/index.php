@@ -104,29 +104,18 @@ if (isset($_GET['request'])) {
         }
     } else if ($_GET['request'] == 'putBook') {
         $image_uploaded = false;
-        $file_uploaded = false;
 
         $upload_cover_image = null;
-        $upload_file = null;
 
         if (isset($_FILES["book-cover-img"])) {
             $cover_image_dir = "uploads/cover/";
             $cover_image_extension = explode(".", $_FILES["book-cover-img"]["name"]);
             $cover_image_extension = end($cover_image_extension);
             $upload_cover_image = date('YmdHis') . "." . $cover_image_extension;
-            if (move_uploaded_file($_FILES["book-cover-img"]["tmp_name"], 'uploads/cover/' . $upload_cover_image)) $image_uploaded = true;
+            if (move_uploaded_file($_FILES["book-cover-img"]["tmp_name"], '../../'. $cover_image_dir . $upload_cover_image)) $image_uploaded = true;
         } else $image_uploaded = true;
 
-        if (isset($_FILES["book-digital-file"])) {
-            $file_dir = "uploads/file/";
-            $file_extension = explode(".", $_FILES["book-digital-file"]["name"]);
-            $file_extension = end($file_extension);
-            $upload_file = date('YmdHis') . "." . $file_extension;
-            if (move_uploaded_file($_FILES["book-digital-file"]["tmp_name"], 'uploads/file/' . $upload_file)) $file_uploaded = true;
-        } else $file_uploaded = true;
-
-
-        if ($image_uploaded && $file_uploaded) {
+        if ($image_uploaded) {
             $book = [
                 'book-id' => $_POST['book-id'],
                 'book-category-id' => $_POST['book-category-id'],
@@ -145,7 +134,6 @@ if (isset($_GET['request'])) {
                 'book-page' => $_POST['book-page'],
                 'book-stock' => $_POST['book-stock'],
                 (isset($_FILES["book-cover-img"]) ? "book_cover_uri" : "") => (isset($_FILES["book-cover-img"]) ? $upload_cover_image : ""),
-                (isset($_FILES["book-digital-file"]) ? "book_file_uri" : "") => (isset($_FILES["book-digital-file"]) ? $upload_file : ""),
                 'book-description' => $_POST['book-description'],
                 'book-collection' => $_POST['book-collection']
             ];

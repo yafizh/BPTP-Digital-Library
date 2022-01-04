@@ -96,11 +96,10 @@
     const save = (id = 0) => {
         putToForm();
         formData.set(book_cover_image, $(`#${book_cover_image}`).prop('files')[0]);
-        formData.set(book_digital_file, $(`#${book_digital_file}`).prop('files')[0]);
         formData.set("book-id", editData.book_id);
         if (id == 0) {
             $.ajax({
-                url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}web_service/?request=putBook`,
+                url: `${IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL: PRODUCTION_BASE_URL}app/database/?request=putBook`,
                 type: 'POST',
                 data: formData,
                 dataType: 'json',
@@ -250,10 +249,6 @@
                 <div class="col-12">
                     <label for="${book_cover_image}" class="form-label">Unggah Cover</label>
                     <input type="file" accept=".png, .jpg, .jpeg" name="${book_cover_image}" class="form-control" id="${book_cover_image}">
-                </div>
-                <div class="col-12">
-                    <label for="${book_digital_file}" class="form-label">Unggah File Digital</label>
-                    <input type="file" name="${book_digital_file}" class="form-control" id="${book_digital_file}" accept=".pdf">
                 </div>
                 <div class="col-12 d-flex">
                     <div class="d-flex flex-grow-1 justify-content-start">
