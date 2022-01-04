@@ -3,7 +3,7 @@
 <body>
     <main>
         <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                 <svg class="bi me-5" width="40" height="32">
                     <use xlink:href="#bootstrap" />
                 </svg>
@@ -61,19 +61,11 @@
                 <span class="fs-4">Laporan</span>
             </a>
             <hr>
-            <div class="row g-3 mb-auto">
+            <div class="row g-3">
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Katalog</h5>
-                        <p class="card-text"></p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>300</strong> Koleksi</li>
-                        <li class="list-group-item"><strong>3000</strong> 100 Koleksi Karya Umum</li>
-                        <li class="list-group-item"><strong>3000</strong> 200 Koleksi Kementerian Pertanian</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/admin_page/detail_page.php" class="card-link link-light btn bg-primary">Detail Data</a>
+                        <h5 class="card-title">Laporan Buku Koleksi Terbaru Bulan ini</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, amet possimus. Veritatis incidunt adipisci sed fuga ipsum? Beatae aperiam id natus obcaecati aliquid quia delectus quam deleniti inventore in. Ut!</p>
                         <a href="#" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -85,55 +77,21 @@
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Laporan Buku Koleksi Terbaru Bulan ini</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>10</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>30</strong> Pengunjung Minggu ini</li>
-                        <li class="list-group-item"><strong>90</strong> Pengunjung Bulan ini</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/admin_page/detail_page2.php" class="card-link link-light btn bg-primary">Detail Data</a>
-                        <!-- <a href="#" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a> -->
-                    </div>
-                </div>
-
-                <div class="card me-2" style="width: 23rem;">
-                    <div class="card-body">
                         <h5 class="card-title">Laporan Buku Terbitan Kementan</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>100</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>230</strong> Pengunjung Minggu ini</li>
-                        <li class="list-group-item"><strong>700</strong> Pengunjung Bulan ini</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="<?= IS_DEVELOPMENT ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL ?>app/admin_page/detail_page3.php" class="card-link link-light btn bg-primary">Detail Data</a>
-                        <!-- <a href="#" class="card-link btn link-light bg-primary">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <a href="#" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
                             </svg>
                             Cetak Laporan
-                        </a> -->
+                        </a>
                     </div>
                 </div>
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Buku Per Kategori</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>94</strong> Pengunjung Hari ini</li>
-                        <li class="list-group-item"><strong>144</strong> Pengunjung Minggu ini</li>
-                        <li class="list-group-item"><strong>230</strong> Pengunjung Bulan ini</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
                         <a href="#" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -146,14 +104,7 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Admin</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>100</strong> Dibaca di BPTP</li>
-                        <li class="list-group-item"><strong>700</strong> Dibaca di Website</li>
-                        <li class="list-group-item"><strong>500</strong> Dibaca di Android</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link link-light btn bg-primary">Detail Data</a>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
                         <a href="#" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -162,8 +113,6 @@
                         </a>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </main>
