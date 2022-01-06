@@ -167,7 +167,7 @@
                         <option value="3">Ilmu Pengetahuan Masyarakat</option>
                         <option value="4">Bahasa</option>
                         <option value="5">Matematika</option>
-                        <option value="6 PENGETAHUAN TERAPAN">Ilmu Pengetahuan Terapan</option>
+                        <option value="6">Ilmu Pengetahuan Terapan</option>
                         <option value="7">Kesenian</option>
                         <option value="8">Literatur</option>
                         <option value="10">Sejarah, Biografi</option>

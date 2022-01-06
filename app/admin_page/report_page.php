@@ -64,9 +64,22 @@
             <div class="row g-3">
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
+                        <h5 class="card-title">Laporan Seluruh Buku</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <a href="../report_page/book_report.php" target="_blank" class="card-link btn link-light bg-primary">
+                            <svg class="me-1" width="20" height="20">
+                                <use xlink:href="#print" />
+                            </svg>
+                            Cetak Laporan
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card me-2" style="width: 23rem;">
+                    <div class="card-body">
                         <h5 class="card-title">Laporan Buku Koleksi Terbaru Bulan ini</h5>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, amet possimus. Veritatis incidunt adipisci sed fuga ipsum? Beatae aperiam id natus obcaecati aliquid quia delectus quam deleniti inventore in. Ut!</p>
-                        <a href="#" class="card-link btn link-light bg-primary">
+                        <a href="../report_page/new_collection_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
                             </svg>
@@ -79,20 +92,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Laporan Buku Terbitan Kementan</h5>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
-                        <a href="#" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card me-2" style="width: 23rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Buku Per Kategori</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
-                        <a href="#" class="card-link btn link-light bg-primary">
+                        <a href="../report_page/new_publish_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
                             </svg>
@@ -105,12 +105,38 @@
                     <div class="card-body">
                         <h5 class="card-title">Laporan Admin</h5>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
-                        <a href="#" class="card-link btn link-light bg-primary">
+                        <a href="../report_page/admin_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
                             </svg>
                             Cetak Laporan
                         </a>
+                    </div>
+                </div>
+
+                <div class="card me-2" style="width: 46.5rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Laporan Buku Per Kategori</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <form action="../report_page/book_by_category_report.php" target="_blank" method="POST" class="d-flex">
+                            <select class="form-select me-3" name="category_id">
+                                <option value="1" selected>Umum</option>
+                                <option value="2">Filsafat</option>
+                                <option value="3">Ilmu Pengetahuan Masyarakat</option>
+                                <option value="4">Bahasa</option>
+                                <option value="5">Matematika</option>
+                                <option value="6">Ilmu Pengetahuan Terapan</option>
+                                <option value="7">Kesenian</option>
+                                <option value="8">Literatur</option>
+                                <option value="10">Sejarah, Biografi</option>
+                            </select>
+                            <button type="submit" class="card-link btn link-light bg-primary" style="width: 250px;">
+                                <svg class="me-1" width="20" height="20">
+                                    <use xlink:href="#print" />
+                                </svg>
+                                Cetak Laporan
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
