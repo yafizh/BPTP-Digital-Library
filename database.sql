@@ -91,6 +91,10 @@
     INNER JOIN `book_table` ON book_table.book_id = book_new_publish_table.book_id 
     INNER JOIN `book_language_table` ON book_table.book_language_id = book_language_table.book_language_id;
 
+    CREATE VIEW `book_popular_view` AS 
+    SELECT book_table.*, DATE(book_popular_table.book_popular_timestamp) AS book_popular_date  FROM `book_popular_table` 
+    INNER JOIN `book_table` ON book_table.book_id = book_popular_table.book_id;
+
     -- Dummies Data
     INSERT INTO 
         book_category_table (book_category) 

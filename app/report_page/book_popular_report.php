@@ -1,3 +1,10 @@
+<?php
+require_once "../database/Connection.php";
+require_once "../../app/utils/helper.php";
+$year_month = $_POST['year-month'];
+$year = explode("-", $year_month)[0];
+$month = explode("-", $year_month)[1];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Koleksi Terbaru</title>
+    <title>Laporan Buku Terpopuler Bulan <?= MONTH_IN_INDONESIA[$month - 1] . ' ' . $year; ?></title>
     <style>
         table,
         th,
@@ -47,29 +54,27 @@
             </div>
         </div>
 
-        <h2 class="text-center my-3" style="border-top: 2px solid black;">Laporan Koleksi Terbaru</h2>
+        <div class="w-100 mt-3" style="border-bottom: 2px solid black; height: 8px;"></div>
+        <h2 class="text-center">Laporan Buku Terpopuler Bulan <?= MONTH_IN_INDONESIA[$month - 1] . ' ' . $year; ?></h2>
         <table>
             <thead>
                 <tr>
                     <th class="text-center">No</th>
                     <th>Judul</th>
-                    <th>ISBN</th>
-                    <th>Pengarang</th>
+                    <th>Dilihat</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 1;
-                require_once "../database/Connection.php";
-                $result = $conn->query("SELECT * FROM book_view");
+                $result = $conn->query("SELECT book_title, COUNT(book_id) AS clicked_count FROM book_popular_view WHERE MONTH(book_popular_date)='$month' AND YEAR(book_popular_date)='$year'");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
                         <tr>
                             <td class="text-center"><?= $no++; ?></td>
                             <td><?= $row['book_title']; ?></td>
-                            <td class="text-center"><?= $row['book_isbn']; ?></td>
-                            <td class="text-center"><?= $row['book_author']; ?></td>
+                            <td class="text-center"><?= $row['clicked_count']; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php endif; ?>
