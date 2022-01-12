@@ -122,8 +122,13 @@
             </div>
         </header>
 
+        <style>
+            a {
+                text-decoration: none;
+            }
+        </style>
         <!-- Categories -->
-        <div class="nav-scroller py-1 container">
+        <div class="nav-scroller py-1">
             <nav class="nav d-flex justify-content-between" id="categories-container">
             </nav>
         </div>
