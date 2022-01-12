@@ -63,17 +63,6 @@
             <hr>
             <div class="row g-3">
                 <div class="card me-2" style="width: 23rem;">
-<<<<<<< HEAD
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Seluruh Buku</h5>
-                        <p>Laporan Seluruh buku yang sudah di input</p>
-                        <a href="../report_page/book_report.php" target="_blank" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-=======
                     <div class="card-body text-center">
                         <h5 class="card-title">Laporan Buku Terpopuler</h5>
                         <form action="../report_page/book_by_category_report.php" target="_blank" method="POST">
@@ -85,22 +74,10 @@
                                 Cetak Laporan
                             </button>
                         </form>
->>>>>>> 6bfea2a0586b26f492ee22c6d0711938a4a51fea
                     </div>
                 </div>
 
                 <div class="card me-2" style="width: 23rem;">
-<<<<<<< HEAD
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Buku Koleksi Terbaru Bulan ini</h5>
-                        <p>Laporan Buku Koleksi Berdasarkan buku terbaru dari satu bulan terakhir</p>
-                        <a href="../report_page/new_collection_report.php" target="_blank" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-=======
                     <div class="card-body text-center">
                         <h5 class="card-title">Laporan Buku Koleksi Terbaru</h5>
                         <form action="../report_page/book_by_category_report.php" target="_blank" method="POST">
@@ -112,22 +89,12 @@
                                 Cetak Laporan
                             </button>
                         </form>
->>>>>>> 6bfea2a0586b26f492ee22c6d0711938a4a51fea
                     </div>
                 </div>
 
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Laporan Buku Terbitan Kementan</h5>
-<<<<<<< HEAD
-                        <p>Laporan Buku khusus buku yang hanya di terbitkan Kementerian Pertanian</p>
-                        <a href="../report_page/new_publish_report.php" target="_blank" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-=======
                         <form action="../report_page/book_by_category_report.php" target="_blank" method="POST">
                             <input type="month" value="<?= Date("Y-m"); ?>" class="form-control mt-3 mb-3">
                             <button type="submit" class="card-link btn link-light bg-primary" style="width: 250px;">
@@ -137,36 +104,14 @@
                                 Cetak Laporan
                             </button>
                         </form>
->>>>>>> 6bfea2a0586b26f492ee22c6d0711938a4a51fea
                     </div>
                 </div>
 
                 <div class="card me-2" style="width: 23rem;">
-<<<<<<< HEAD
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Admin</h5>
-                        <p>Laporan Pengguna admin yang ada</p>
-                        <a href="../report_page/admin_report.php" target="_blank" class="card-link btn link-light bg-primary">
-                            <svg class="me-1" width="20" height="20">
-                                <use xlink:href="#print" />
-                            </svg>
-                            Cetak Laporan
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card me-2" style="width: 46.5rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Laporan Buku Per Kategori</h5>
-                        <p>Laporan Buku berdasarkan kategori yang ada</p>
-                        <form action="../report_page/book_by_category_report.php" target="_blank" method="POST" class="d-flex">
-                            <select class="form-select me-3" name="category_id">
-=======
                     <div class="card-body text-center">
                         <h5 class="card-title">Laporan Buku Per Kategori</h5>
                         <form action="../report_page/book_by_category_report.php" target="_blank" method="POST">
                             <select class="form-select mt-3 mb-3" name="category_id">
->>>>>>> 6bfea2a0586b26f492ee22c6d0711938a4a51fea
                                 <option value="1" selected>Umum</option>
                                 <option value="2">Filsafat</option>
                                 <option value="3">Ilmu Pengetahuan Masyarakat</option>
