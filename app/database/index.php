@@ -29,6 +29,8 @@ if (isset($_GET['request'])) {
         echo $apiService->getNewBookCollection();
     } else if ($_GET['request'] == 'getNewBookPublish') {
         echo $apiService->getNewBookPublish();
+    } else if ($_GET['request'] == 'postPopularBook') {
+        echo $apiService->postPopularBook($_POST['book_id']);
     } else if ($_GET['request'] == 'postBook') {
         $image_uploaded = false;
 

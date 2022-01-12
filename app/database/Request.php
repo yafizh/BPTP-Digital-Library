@@ -355,11 +355,34 @@ class Request
     }
 
     public function getCountBook($bookCategoryId = false)
-    {   
+    {
         if ($result = $this->conn->query("SELECT COUNT(*) AS count_book FROM book_view" . (($bookCategoryId) ? " WHERE book_category_id=$bookCategoryId" : ""))) {
             return json_encode([
                 "isSuccess" => true,
                 "data" => $result->fetch_all(MYSQLI_ASSOC)
+            ]);
+        } else {
+            return json_encode([
+                "isSuccess" => false,
+                "message" => $this->conn->error
+            ]);
+        }
+    }
+
+    public function postPopularBook($bookId)
+    {
+        $query = "INSERT INTO book_popular_table (
+            book_id,
+            book_popular_timestamp
+        ) VALUES (
+            '" . $bookId . "',
+            '" . Date("Y-m-d H:i:s") . "'
+        )";
+
+        if ($this->conn->query($query)) {
+            return json_encode([
+                "isSuccess" => true,
+                "message" => "New record created successfully"
             ]);
         } else {
             return json_encode([

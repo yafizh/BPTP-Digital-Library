@@ -141,6 +141,20 @@ const showBook = callback => {
                             `);
         if (!sessionStorage.getItem(cacheKey)) {
             $(book).on('click', function () {
+                $.ajax({
+                    url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/database/index.php?request=postPopularBook`,
+                    type: 'POST',
+                    data: {
+                        "book_id": value.book_id,
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data)
+                    },
+                    error: function (data) {
+                        console.log(data)
+                    },
+                });
                 $("#exampleModal .modal-body").html(`
                                 <div class="d-flex justify-content-center">
                                     <img src="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}${IMAGE_COVER_RESOURCE}${value.book_cover_uri}" style="max-height: 300px;">
