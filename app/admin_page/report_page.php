@@ -65,7 +65,7 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Seluruh Buku</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <p>Laporan Seluruh buku yang sudah di input</p>
                         <a href="../report_page/book_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -78,7 +78,7 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Buku Koleksi Terbaru Bulan ini</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, amet possimus. Veritatis incidunt adipisci sed fuga ipsum? Beatae aperiam id natus obcaecati aliquid quia delectus quam deleniti inventore in. Ut!</p>
+                        <p>Laporan Buku Koleksi Berdasarkan buku terbaru dari satu bulan terakhir</p>
                         <a href="../report_page/new_collection_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -91,7 +91,7 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Buku Terbitan Kementan</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <p>Laporan Buku khusus buku yang hanya di terbitkan Kementerian Pertanian</p>
                         <a href="../report_page/new_publish_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -104,7 +104,7 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Admin</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <p>Laporan Pengguna admin yang ada</p>
                         <a href="../report_page/admin_report.php" target="_blank" class="card-link btn link-light bg-primary">
                             <svg class="me-1" width="20" height="20">
                                 <use xlink:href="#print" />
@@ -117,7 +117,7 @@
                 <div class="card me-2" style="width: 46.5rem;">
                     <div class="card-body">
                         <h5 class="card-title">Laporan Buku Per Kategori</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, nemo! Incidunt facere, vitae illo, non enim, accusamus omnis ea assumenda alias quod accusantium voluptate amet voluptatem repudiandae eum ad dicta?</p>
+                        <p>Laporan Buku berdasarkan kategori yang ada</p>
                         <form action="../report_page/book_by_category_report.php" target="_blank" method="POST" class="d-flex">
                             <select class="form-select me-3" name="category_id">
                                 <option value="1" selected>Umum</option>
