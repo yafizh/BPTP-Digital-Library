@@ -61,21 +61,12 @@
         FOREIGN KEY (book_id) REFERENCES book_table (book_id)
     );
 
-    CREATE TABLE `website_guest_table` (
-        website_guest_id INT NOT NULL AUTO_INCREMENT,
-        website_guest_ip_public VARCHAR(255), -- Tipe Data Masih Belum Tepat
-        website_guest_date_time_enter DATETIME NOT NULL,
-        PRIMARY KEY (website_guest_id)
-    );
-
-    CREATE TABLE `website_book_views_table` (
-        website_book_views_id INT NOT NULL AUTO_INCREMENT,
+    CREATE TABLE `book_popular_table` (
+        book_popular_id INT NOT NULL AUTO_INCREMENT,
         book_id INT NOT NULL,
-        website_guest_id INT NOT NULL,
-        website_book_views_date_time_reading DATETIME NOT NULL,
-        PRIMARY KEY (website_book_views_id),
-        FOREIGN KEY (book_id) REFERENCES book_table (book_id),
-        FOREIGN KEY (website_guest_id) REFERENCES website_guest_table (website_guest_id)
+        book_popular_timestamp DATETIME NOT NULL,
+        PRIMARY KEY (book_popular_id),
+        FOREIGN KEY (book_id) REFERENCES book_table (book_id)
     );
 
     CREATE VIEW `book_view` AS 
@@ -190,24 +181,3 @@
         (12, CURRENT_TIMESTAMP()),
         (13, CURRENT_TIMESTAMP()),
         (14, CURRENT_TIMESTAMP());
-
-    INSERT INTO 
-        website_guest_table (
-            website_guest_ip_public,
-            website_guest_date_time_enter
-        )
-    VALUES 
-        ('192.168.1.1', CURRENT_TIMESTAMP()),
-        ('192.168.1.2', CURRENT_TIMESTAMP()),
-        ('192.168.1.3', CURRENT_TIMESTAMP()),
-        ('192.168.1.4', CURRENT_TIMESTAMP()),
-        ('192.168.1.5', CURRENT_TIMESTAMP() - INTERVAL 1 DAY),
-        ('192.168.1.6', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.7', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.8', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.9', CURRENT_TIMESTAMP() - INTERVAL 2 DAY),
-        ('192.168.1.10', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
-        ('192.168.1.11', CURRENT_TIMESTAMP() - INTERVAL 3 DAY),
-        ('192.168.1.12', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
-        ('192.168.1.13', CURRENT_TIMESTAMP() - INTERVAL 4 DAY),
-        ('192.168.1.14', CURRENT_TIMESTAMP() - INTERVAL 5 DAY);
