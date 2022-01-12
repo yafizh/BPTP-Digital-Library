@@ -80,8 +80,8 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Laporan Buku Koleksi Terbaru</h5>
-                        <form action="../report_page/book_by_category_report.php" target="_blank" method="POST">
-                            <input type="month" value="<?= Date("Y-m"); ?>" class="form-control mt-3 mb-3">
+                        <form action="../report_page/new_collection_report.php" target="_blank" method="POST">
+                            <input type="month" value="<?= Date("Y-m"); ?>" name="year-month" class="form-control mt-3 mb-3">
                             <button type="submit" class="card-link btn link-light bg-primary" style="width: 250px;">
                                 <svg class="me-1" width="20" height="20">
                                     <use xlink:href="#print" />
@@ -95,8 +95,8 @@
                 <div class="card me-2" style="width: 23rem;">
                     <div class="card-body text-center">
                         <h5 class="card-title">Laporan Buku Terbitan Kementan</h5>
-                        <form action="../report_page/book_by_category_report.php" target="_blank" method="POST">
-                            <input type="month" value="<?= Date("Y-m"); ?>" class="form-control mt-3 mb-3">
+                        <form action="../report_page/new_publish_report.php" target="_blank" method="POST">
+                            <input type="month" value="<?= Date("Y-m"); ?>" name="year-month" class="form-control mt-3 mb-3">
                             <button type="submit" class="card-link btn link-light bg-primary" style="width: 250px;">
                                 <svg class="me-1" width="20" height="20">
                                     <use xlink:href="#print" />

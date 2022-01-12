@@ -82,12 +82,20 @@
     LEFT JOIN `book_new_publish_table` ON book_table.book_id = book_new_publish_table.book_id;
 
     CREATE VIEW `new_book_collection_view` AS 
-    SELECT book_table.*, book_language_table.book_language FROM `book_new_collection_table` 
+    SELECT 
+        book_table.*, 
+        book_language_table.book_language,
+        DATE(book_new_collection_table.book_new_collection_timestamp) AS book_new_collection_date
+    FROM `book_new_collection_table` 
     INNER JOIN `book_table` ON book_table.book_id = book_new_collection_table.book_id 
     INNER JOIN `book_language_table` ON book_table.book_language_id = book_language_table.book_language_id;
 
     CREATE VIEW `book_new_publish_view` AS 
-    SELECT book_table.*, book_language_table.book_language FROM `book_new_publish_table` 
+    SELECT 
+        book_table.*, 
+        book_language_table.book_language,
+        DATE(book_new_publish_table.book_new_publish_timestamp) AS book_new_publish_date  
+    FROM `book_new_publish_table` 
     INNER JOIN `book_table` ON book_table.book_id = book_new_publish_table.book_id 
     INNER JOIN `book_language_table` ON book_table.book_language_id = book_language_table.book_language_id;
 

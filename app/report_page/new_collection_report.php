@@ -1,3 +1,10 @@
+<?php
+require_once "../database/Connection.php";
+require_once "../../app/utils/helper.php";
+$year_month = $_POST['year-month'];
+$year = explode("-", $year_month)[0];
+$month = explode("-", $year_month)[1];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +12,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Koleksi Terbaru</title>
+    <title>Laporan Koleksi Terbaru Bulan <?= MONTH_IN_INDONESIA[$month - 1] . ' ' . $year; ?></title>
     <style>
         table,
         th,
@@ -47,7 +54,7 @@
             </div>
         </div>
 
-        <h2 class="text-center my-3" style="border-top: 2px solid black;">Laporan Koleksi Terbaru</h2>
+        <h2 class="text-center my-3" style="border-top: 2px solid black;">Laporan Koleksi Terbaru Bulan <?= MONTH_IN_INDONESIA[$month - 1] . ' ' . $year; ?></h2>
         <table>
             <thead>
                 <tr>
@@ -60,8 +67,7 @@
             <tbody>
                 <?php
                 $no = 1;
-                require_once "../database/Connection.php";
-                $result = $conn->query("SELECT * FROM new_book_collection_view");
+                $result = $conn->query("SELECT * FROM new_book_collection_view WHERE MONTH(book_new_collection_date)='$month' AND YEAR(book_new_collection_date)='$year'");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
