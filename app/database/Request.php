@@ -9,56 +9,6 @@ class Request
         $this->conn = $conn;
     }
 
-    public function postGuest($guest)
-    {
-        $query = "INSERT INTO guest_table (
-            book_category_id,
-            guest_full_name,
-            guest_come_date_time,
-            guest_come_reason,
-            guest_profession 
-        ) VALUES (
-            '" . $guest['book-category-id'] . "',
-            '" . $guest['guest-full-name'] . "',
-            '" . $guest['guest-come-date-time'] . "',
-            '" . $guest['guest-come-reason'] . "',
-            '" . $guest['guest-profession'] . "'
-        )";
-
-        if ($this->conn->query($query)) {
-            return json_encode([
-                "isSuccess" => true,
-                "message" => "New record created successfully"
-            ]);
-        } else {
-            return json_encode([
-                "isSuccess" => false,
-                "message" => $this->conn->error
-            ]);
-        }
-    }
-
-    public function getGuestByGuestFullNameDateProfessionCategoryId($guest_full_name, $guest_come_date, $guest_profession, $book_category_id)
-    {
-        $query = "SELECT guest_full_name, DATE(guest_come_date_time) AS guest_come_date_time, guest_profession, book_category FROM guest_table_view WHERE 
-            guest_full_name LIKE '" . $guest_full_name . "%' AND
-            DATE(guest_come_date_time) LIKE '" . $guest_come_date . "%' AND
-            guest_profession LIKE '" . $guest_profession . "%' AND 
-            book_category_id LIKE '" . $book_category_id . "%'
-        ";
-        if ($result = $this->conn->query($query)) {
-            return json_encode([
-                "isSuccess" => true,
-                "data" => $result->fetch_all(MYSQLI_ASSOC)
-            ]);
-        } else {
-            return json_encode([
-                "isSuccess" => false,
-                "message" => $this->conn->error
-            ]);
-        }
-    }
-
     public function getAllBooks()
     {
         $result = $this->conn->query("SELECT * FROM book_view");
@@ -389,106 +339,9 @@ class Request
         }
     }
 
-    public function postWebsiteGuest($guestWebsite)
+    public function postCustomQuery($query)
     {
-        $query = "INSERT INTO website_guest_table (
-                    website_guest_ip_public, 
-                    website_guest_date_time_enter
-                ) VALUES (
-                    '" . $guestWebsite['website_guest_ip_public'] . "',
-                    '" . $guestWebsite['website_guest_date_time_enter'] . "'
-                )";
-        if ($this->conn->query($query)) {
-            return json_encode([
-                "isSuccess" => true,
-                "data" => [
-                    'website_guest_id' => $this->conn->insert_id
-                ]
-            ]);
-        } else {
-            return json_encode([
-                "isSuccess" => false,
-                "message" => $this->conn->error
-            ]);
-        }
-    }
-
-    public function postWebsiteBookViews($websiteBookViews)
-    {
-        $query = "INSERT INTO website_book_views_table (
-            book_id, 
-            website_guest_id,
-            website_book_views_date_time_reading
-        ) VALUES (
-            '" . $websiteBookViews['book_id'] . "',
-            '" . $websiteBookViews['website_guest_id'] . "',
-            '" . $websiteBookViews['website_book_views_date_time_reading'] . "'
-        )";
-        if ($this->conn->query($query)) {
-            return json_encode([
-                "isSuccess" => true,
-                "message" => "Successfully"
-            ]);
-        } else {
-            return json_encode([
-                "isSuccess" => false,
-                "message" => $this->conn->error
-            ]);
-        }
-    }
-
-    public function postAndroidGuest($guestAndroid)
-    {
-        $query = "INSERT INTO android_guest_table (
-                    android_guest_ip_public, 
-                    android_guest_date_time_enter
-                ) VALUES (
-                    '" . $guestAndroid['android_guest_ip_public'] . "',
-                    '" . $guestAndroid['android_guest_date_time_enter'] . "'
-                )";
-        if ($this->conn->query($query)) {
-            return json_encode([
-                "isSuccess" => true,
-                "data" => [
-                    'android_guest_id' => $this->conn->insert_id
-                ]
-            ]);
-        } else {
-            return json_encode([
-                "isSuccess" => false,
-                "message" => $this->conn->error
-            ]);
-        }
-    }
-
-    public function postAndroidBookViews($androidBookViews)
-    {
-        $query = "INSERT INTO android_book_views_table (
-            book_id, 
-            android_guest_id,
-            android_book_views_date_time_reading
-        ) VALUES (
-            '" . $androidBookViews['book_id'] . "',
-            '" . $androidBookViews['android_guest_id'] . "',
-            '" . $androidBookViews['android_book_views_date_time_reading'] . "'
-        )";
-        if ($this->conn->query($query)) {
-            return json_encode([
-                "isSuccess" => true,
-                "message" => "Successfully"
-            ]);
-        } else {
-            return json_encode([
-                "isSuccess" => false,
-                "message" => $this->conn->error
-            ]);
-        }
-    }
-
-
-    public function getGuest()
-    {
-        if ($result = $this->conn->query("SELECT * FROM guest_table")) {
+        if ($result = $this->conn->query($query)) {
             return json_encode([
                 "isSuccess" => true,
                 "data" => $result->fetch_all(MYSQLI_ASSOC)
@@ -501,9 +354,9 @@ class Request
         }
     }
 
-    public function postCustomQuery($query)
-    {
-        if ($result = $this->conn->query($query)) {
+    public function getCountBook($bookCategoryId = false)
+    {   
+        if ($result = $this->conn->query("SELECT COUNT(*) AS count_book FROM book_view" . (($bookCategoryId) ? " WHERE book_category_id=$bookCategoryId" : ""))) {
             return json_encode([
                 "isSuccess" => true,
                 "data" => $result->fetch_all(MYSQLI_ASSOC)

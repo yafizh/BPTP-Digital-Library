@@ -48,7 +48,7 @@ if (!getCookie('website_guest_ip_public')) {
         dataType: 'json',
         success: function (response) {
             console.log(response)
-            if(response.isSuccess) {
+            if (response.isSuccess) {
                 setCookie('website_guest_id', response.data.website_guest_id, 1)
             }
         },
@@ -147,8 +147,13 @@ const showBook = callback => {
                                 </div>
                                 <div class="mt-3">
                                     <div class="d-flex">
-                                        <div style="width: 170px;">Judul</div>
-                                        <div class="col">${value.book_title}${(value.book_sub_title) ? (': ' + value.book_sub_title) : ''}</div>
+                                        <h4 class="col text-center">${value.book_title}${(value.book_sub_title) ? (': ' + value.book_sub_title) : ''}</h4>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="col text-center">${value.book_description}</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <h4 class="col">Detail Buku</h4>
                                     </div>
                                     <div class="d-flex">
                                         <div style="width: 170px;">Penulis/Pengarang</div>
@@ -298,13 +303,46 @@ const getBookByCategoryId = categoryId => {
 }
 
 const showCategories = categories => {
+    $.ajax({
+        url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/database/?request=getCountBook`,
+        type: 'GET',
+        async: false,
+        dataType: 'json',
+        async: false,
+        success: function (response) {
+            if (response.isSuccess) {
+                const category = $(`<a class="p-2 link-secondary text-white" href="#">SEMUA(${response.data[0].count_book})</a>`);
+                category.on('click', _ => getAllBooks());
+                $('#categories-container').append(category);
+            } else console.log(response);
+        },
+        error: function (response) {
+            console.log(response)
+        },
+    });
     $.each(categories, function (index, value) {
-        const category = $(`<a class="p-2 link-secondary text-white" href="#">${value.book_category}</a>`);
-        category.on('click', _ => {
-            $("#category-title").html(value.book_category);
-            getBookByCategoryId(value.book_category_id);
+        $.ajax({
+            url: `${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/database/?request=getCountBook`,
+            type: 'GET',
+            data: {
+                'book_category_id': value.book_category_id,
+            },
+            async: false,
+            dataType: 'json',
+            success: function (response) {
+                if (response.isSuccess) {
+                    const category = $(`<a class="p-2 link-secondary text-white" href="#">${value.book_category}(${response.data[0].count_book})</a>`);
+                    category.on('click', _ => {
+                        $("#category-title").html(value.book_category);
+                        getBookByCategoryId(value.book_category_id);
+                    });
+                    $('#categories-container').append(category);
+                } else console.log(response);
+            },
+            error: function (response) {
+                console.log(response)
+            },
         });
-        $('#categories-container').append(category);
     })
 }
 const getAllBooks = _ => {
@@ -321,7 +359,7 @@ const getAllBooks = _ => {
 
 getAllCategories();
 getAllBooks();
-if (sessionStorage.getItem(cacheKey)) 
+if (sessionStorage.getItem(cacheKey))
     $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/add_catalog_page.php" class="text-white text-decoration-none ms-5">Halaman Admin</a>`);
- else 
+else
     $('#top-to-banner').append(`<a href="${(IS_DEVELOPMENT) ? DEVELOPMENT_BASE_URL : PRODUCTION_BASE_URL}app/admin_page/login_page.php" class="text-white text-decoration-none ms-5">Login</a>`);

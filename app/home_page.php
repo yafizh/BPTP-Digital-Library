@@ -125,7 +125,6 @@
         <!-- Categories -->
         <div class="nav-scroller py-1 container">
             <nav class="nav d-flex justify-content-between" id="categories-container">
-                <a class="p-2 link-secondary text-white" onclick="getAllBooks()" href="#">SEMUA</a>
             </nav>
         </div>
     </div>
