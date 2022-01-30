@@ -67,7 +67,7 @@ $month = explode("-", $year_month)[1];
             <tbody>
                 <?php
                 $no = 1;
-                $result = $conn->query("SELECT book_title, COUNT(book_id) AS clicked_count FROM book_popular_view WHERE MONTH(book_popular_date)='$month' AND YEAR(book_popular_date)='$year'");
+                $result = $conn->query("SELECT book_title, COUNT(book_id) AS clicked_count FROM book_popular_view WHERE MONTH(book_popular_date)='$month' AND YEAR(book_popular_date)='$year' GROUP BY book_id");
                 ?>
                 <?php if ($result->num_rows) : ?>
                     <?php while ($row = $result->fetch_assoc()) : ?>
